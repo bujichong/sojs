@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-// W3C// DTD XHTML 1.0 Transitional// EN" "http:// www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http:// www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>jquery.sobox 2.0 弹窗控件</title>
+<link type="text/css" rel="stylesheet" media="all" href="style.css" />
+</head>
+<body>
+
+
+<div class="wrapper">
+<h1>jquery.sobox 2.0 弹窗控件 <a  class="a_down orange" target="_blank" href="http://code.google.com/p/sochange-juqeryplugin/downloads/list">(点击去下载)</a></h1>
+<div class="intro-box">
+<h2 class="h2-title">sobox 基本参数 </h2>
+<h3>所有参数</h3>
+<pre class="brush:javascript">
+$.sobox.pop({
+	 /* 弹出类型及类型参数 */
+	type : 'content', // 弹窗内容模式:'content','target','ajax','iframe'，每个模式分别对应每个参量
+	target : null, // target方式，target目标，如 '.detail','#contbox'
+	content : null, // content方式，支持html
+	iframe : null, // iframe方式，值为iframe目标页链接，如：http:// www.baidu.com/
+	ajax:{url:null,data:null,callback:function(){}}, // ajax方式
+
+	 /* 位置信息 */
+	posType:'center', // 'center,win,doc,tc,bc' 位置类型：居中 | 距window顶部 | 距离doucment顶部定 | top水平居中 | bottom水平居中
+	pos:[0,0], // [x,y] 距离document左上角坐标,set模式使用
+	offset:[0,0], // [x,y] 弹窗相对本来设定位置偏移量,center模式只改变y轴
+
+	 /* 自定义参数 */
+	cls : null, // 添加自定义类名
+	width:360,height:null, // 宽高属性,iframe模式下，height为iframe高度
+	defaultShow:true, // 直接显示pop
+	visibility:true, // 默认pop执行后显示（用于部分复杂处理场景）
+	title : '提示', // 默认标题
+	showTitle:true, // 标题栏隐藏：默认显示
+	outCloseBtn : false, //标题上的关闭按钮是否外置 ：默认内置
+	showMask : true, // 显示遮罩
+	onlyOne : false, // 为true时，同一状态下只显示一个pop
+	drag :true, // 是否可拖动
+	maskClick : true, // 点击背景关闭内容
+	btn : [], // {cls:,text'确定',link:,removePop: true,callback:}
+
+	 /* 返回事件 */
+	beforePop:function(){}, // 窗口打开之前返回事件
+	onPop: function(){}, // 窗口打开返回事件
+	closePop: function(){} // 窗口关闭返回事件
+});
+</pre>
+	<h3 class="red">btn参数说明：</h3>
+	<p>默认每个btn元素由一个<span class="red">.a-sopop-btn</span> 的a元素内置一个<span class="red">.s-sopop-btn</span> span元素组成，</p>
+<pre class="brush:javascript">
+{
+	cls:null, // 添加类名
+	text:'确定', // 默认按钮文字
+	link:'#', // 为a添加链接，添加链接后，按钮返回链接指向地址
+	removePop: true, // 默认点击按钮关闭弹出层
+	callback:function (removePop){} // 返回事件
+}
+</pre>
+
+	<p>开放接口参数多多，敬请挖掘扩展~</p>
+	<p class="p-author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2013.7.30</p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">快捷：alert 弹窗</h2>
+<pre class="brush:javascript">
+$.sobox.alert(title,content,callback); //参数： (alert 弹窗标题，内容，点击确定返回事件)
+</pre>
+<p><b>示例：</b>  请 <a class="a-alert test" href="#">点击这里</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">快捷：confirm 弹窗</h2>
+<pre class="brush:javascript">
+$.sobox.alert(title,content,success,cancel);
+//参数： (弹窗标题，内容，确定返回事件，中断返回事件)， 注：点取消按钮返回此事件，点背景或标题上的关闭按钮不返回此事件
+</pre>
+<p><b>示例：</b> 请 <a class="a-confirm test" href="#">点击这里</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">快捷： soIframePop方法</h2>
+<p><b>参数设置：</b></p>
+<pre class="brush:javascript">
+$(obj).soIframePop({
+	 targetTag:'href', // 选择设定目标的tag标签
+	 splitString:'#soIframe?', // 链接中split参数的标识字段
+	 width :800,height:450, // 默认宽高
+	 showTitle: false // 默认标题不显示
+})
+</pre>
+<p><b>Html代码：</b></p>
+<pre class="brush:javascript">
+< a class="a-soIframe" href="http:// www.baidu.com/#soIframe?width=800&height=500&showTitle=0&outCloseBtn=true">以iframe方式打开< /a>
+</pre>
+<p><b>js代码：</b></p>
+<pre class="brush:javascript">
+var soIframe = $('.a-soIframe').soIframePop();
+</pre>
+<p><b>在iframe里用js关闭弹窗：</b></p>
+<pre class="brush:javascript">
+parent.soIframe[1].removePop();
+</pre>
+<p><b>示例：</b> <a class="a-soIframe test" href="http://www.baidu.com/#soIframe?width=800&height=500&showTitle=0">以iframe方式打开百度首页</a> &nbsp;&nbsp; <a class="a-soIframe a-iframe-t test" href="1.html?hs#soIframe?width=300&height=160&title=本地页面&showTitle=1">以iframe方式打开本地内容</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">扩展：tip方法</h2>
+<pre class="brush:javascript">
+$.sobox.tip({
+	 cls:'so-popTip', // 默认添加私有样式为 so-popTip
+	 posType:'ct', // 'ct','bt' 默认是ct:垂直上方,bt:垂直下方
+	 width:360, // 默认宽度360px
+	 stayTime: 5000 // 默认停留5s，小于等于0时不自动关闭
+	 content: '自定义tip内容' // tip内容
+}); 
+</pre>
+<p class="red">注：其他参数继承sobox.pop</p>
+<p><b>示例：</b> <a class="a-tip test" href="#">我在上方显示</a> &nbsp;&nbsp;<a class="a-centerTip test" href="#">我在中间显示</a> &nbsp;&nbsp;<a class="a-bottomTip test" href="#">我在下方显示</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">扩展：loading方法</h2>
+<pre class="brush:javascript">
+$.sobox.loading({
+	 cls:'so-loading', // 默认添加私有样式为 so-loading
+	 stayTime: 0 // 小等于0时不自动关闭，默认值为0采用手动关闭
+}); 
+</pre>
+<p><b>开启手动模式：</b></p>
+<pre class="brush:javascript">
+var myLoading = $.sobox.loading();//开启loading状态
+
+myLoading.close();//手动关闭loading
+</pre>
+<br />
+<p><b>示例：</b>  <a class="a-loading test" href="#">打开loading ，3s后setTimeout用close方式关闭</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">扩展：soSidePop方法</h2>
+<pre class="brush:javascript">
+soSidePop({
+	 event :'click', // 可以是keyup,keydown,mouseover,mouseenter等等jquery支持的事件
+	 offset:[10,10], // 默认x,y轴均偏移10px，建议根据实际情况一定的偏移量
+	 onlyOne : true, // 默认同一状态下只显示一个pop
+	 returnFalse:ture // 默认点击对象中断正常事件
+}); 
+</pre>
+<p class="red">注：其他参数继承sobox.pop</p><br />
+<b>代码示例：</b><br />
+<pre class="brush:javascript">
+$('.a-sidePop').soSidePop({
+	 type:'content',
+	 content:'再点一下“点击这里试试”按钮，是不是不会弹出多个弹出框？',
+	 width:'300',
+	 offset:[10,10],
+	 btn:[{text:'确定',callback:function () {
+		alert('这就是onlyOne的属性作用，为true时，当前只能有一个弹窗，不会重复弹出');
+	 }},{text:'取消',cls:'a-sopop-cancel'}]
+}); 
+</pre>
+<p><a class="a-sidePop test" href="#">点击这里试试</a></p>
+</div>
+
+<div class="intro-box">
+<h2 class="h2-title">扩展：soOverTip方法</h2>
+<pre class="brush:javascript">
+soOverTip({
+	 offset:[10,10], // 默认x,y轴均偏移10px，建议根据实际情况一定的偏移量
+	 onlyOne : true, // 默认同一状态下只显示一个pop
+}); 
+</pre>
+<p class="red">注：其他参数继承sobox.pop，这个东西做的不完整，只是在下方显示，简单使用，真正的tip定位比这个复杂</p><br />
+<b>代码示例：</b><br />
+<pre class="brush:javascript">
+$('.a-overTip').soOverTip({
+	 type:'target',
+	 target:'.demo-box-2',
+	 offset:[-100,20]
+}); 
+</pre>
+<p><a class="a-overTip test" href="#">鼠标滑过这里试试</a></p>
+</div>
+<div class="intro-box">
+<h2 class="h2-title">sobox.pop标准4模式示例：</h2>
+<h3>content模式：</h3>
+<pre class="brush:javascript">
+$.sobox.pop({
+	cls:'subsidy-box',
+	title:'来者须知',
+	width:520,
+	content:'该弹窗为节能型号，使用成功后请您及时准备节能补贴资料。本站送装人员上门时，需要您的节能补贴资料才能为您安装，届时请您主动提供身份证复印件（包含正、反面）或营业执照复印件，并在《节能产品惠民工程补贴确认函》上签字确认。',// 支持html标签
+	btn:[
+		{text:'不接受',cls:'a-sopop-cancel'},
+		{text:'接受并使用',removePop:false,callback:function () {$.sobox.alert('提示','哈哈，这个窗口在最上面了吧');} }
+	]
+}); 
+</pre>
+<p><b>示例：</b> <a class="a-pop-1 test" href="#">点击这里</a></p>
+<br /><br />
+<h3>target模式：</h3>
+<pre class="brush:javascript">
+$.sobox.pop({
+	type:'target',
+	title:'来者须知',
+	width:520,
+	target:'.demo-box'// 目标对象css选择器名称
+});
+</pre>
+<p><b>示例：</b> <a class="a-pop-2 test" href="#">点击这里</a></p>
+<br /><br />
+<h3>iframe模式：</h3>
+<pre class="brush:javascript">
+$.sobox.pop({
+	type:'iframe',
+	width:800,height:470, //iframe模式必须写有height，不支持自适应，自动出现滚动条
+	title:'sogou',
+	iframe:'http://www.sogou.com/'//iframe 请求地址
+}); 
+</pre>
+<p><b>示例：</b> <a class="a-pop-3 test" href="#">点击这里</a></p>
+<br /><br />
+
+<h3>ajax模式：</h3>
+<pre class="brush:javascript">
+$.sobox.pop({
+	type:'ajax',
+	width:500,
+	ajax:{
+		url:'/ajax.jsp?reglogin',
+		data:{name:'username',password:'password'},
+		callback:function (dom){
+			$('#content').html(dom);
+			$.sobox.alert('提示','加载成功！');
+		}
+	}
+}); 
+</pre>
+<p>这个就不示例了，没啥新鲜的，直接把ajax的内容load进来，不是请求返回json字符串哦，不要搞错了！</p>
+</div>
+
+
+
+
+
+</div>
+
+<div style="display:none;" class="demo-box">
+从前有座山，山上有座庙，庙里有2个和尚，有一天，老和尚对小和尚说...
+</div>
+<div style="display:none;" class="demo-box-2">
+从前有座山，山上有座庙，庙里有2个和尚，有一天，老和尚对小和尚说...从前有座山，山上有座庙，庙里有2个和尚，有一天，老和尚对小和尚说...
+
+</div>
+<!-- 
+pop代码示例
+<div style="width: 320px;" class="so-popbox">
+<h2 class="h2-sopop"><span class="s-title">标题</span></h2><span class="ss-close">[关闭]</span>
+<div class="so-popbox-cont">内容</div>
+<p class="p-so-popBtn"><a href="#" class="a-btn"><span class="s-btn">确定</span></a></p>
+</div> -->
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery.sobox.js"></script>
+
+<script type="text/javascript">
+
+$('.a-alert').click(function (e) {
+var c = 'clientX:'+e.clientX+' , clientY:'+e.clientY;
+$.sobox.alert('提示','我是sobox提示框<br />初始坐标是<span class="blue"> '+c+'</span><br />我的默认自定义class为<b class="red">"so-popAlert"</b>，<br />宽度<b class="orange">320px</b>，可以试着拖动我的标题...');
+return false;
+});
+
+$('.a-confirm').click(function (e) {
+$.sobox.confirm('小调查','sobox是你见过的最好用的弹窗吗？',function () {
+$.sobox.alert('哎呀呀','哎呀，知己啊，哈哈，多多交流啊~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
+},function () {
+$.sobox.alert('哎呀妈呀','好吧，亲，提点意见吧~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
+});
+return false;
+});
+
+$('.a-tip').click(function () {
+$.sobox.tip({
+content: '爱看不看，上面提示一下~'
+});
+return false;
+});
+
+$('.a-centerTip').click(function () {
+$.sobox.tip({
+posType:'center',
+showTitle:true,
+content: '其实我就是提示后自动关闭了...',
+showMask:true
+});
+return false;
+});
+
+$('.a-bottomTip').click(function () {
+$.sobox.tip({
+cls:'so-popTip-2',
+posType:'bc',
+content:'想看不看，下面提示一下，3秒就撤了~',
+outCloseBtn : true,
+stayTime: 3000
+});
+return false;
+});
+
+$('.a-loading').click(function () {
+var myLoading = $.sobox.loading();
+setTimeout(function () {
+myLoading.close();
+},3000);
+return false;
+});
+
+var soIme = $('.a-soIframe').soIframePop();
+var soIme2;//另一种全局变量获取iframePop的状态参数
+$('.a-iframe-t').click(function () {
+soIme2 = $(this).data('iframePop');
+});
+
+$('.a-sidePop').soSidePop({
+type:'content',
+content:'再点一下“点击这里试试”按钮，是不是不会弹出多个弹出框？',
+width:'300',
+offset:[10,10],
+btn:[{text:'确定',callback:function () {
+alert('这就是onlyOne的属性作用，为true时，当前只能有一个弹窗，不会重复弹出');
+}},{text:'取消',cls:'a-sopop-cancel'}]
+});
+
+$('.a-overTip').soOverTip({
+type:'target',
+target:'.demo-box-2',
+width:250,
+offset:[-20,30]
+});
+
+$('.a-pop-1').click(function () {
+$.sobox.pop({
+cls:'subsidy-box',
+title:'来者须知',
+width:520,
+content:'该弹窗为节能型号，使用成功后请您及时准备节能补贴资料。本站送装人员上门时，需要您的节能补贴资料才能为您安装，届时请您主动提供身份证复印件（包含正、反面）或营业执照复印件，并在《节能产品惠民工程补贴确认函》上签字确认。',
+btn:[
+	{text:'不接受',cls:'a-sopop-cancel'},
+	{text:'接受并使用',removePop:false,callback:function () {$.sobox.alert('提示','哈哈，这个窗口在最上面了吧');}
+}]
+});
+return false;
+});
+
+$('.a-pop-2').click(function () {
+$.sobox.pop({
+	type:'target',
+	title:'看点啥？',
+	width:420,
+	target:'.demo-box'
+});
+return false;
+});
+
+$('.a-pop-3').click(function () {
+$.sobox.pop({
+type:'iframe',
+width:800,height:490,
+title:'sogou',
+iframe:'http://www.sogou.com/'
+});
+return false;
+});
+
+
+</script>
+
+
+<!-- SyntaxHighlighter -->
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter/brush.css" />
+<script type="text/javascript" src="SyntaxHighlighter/brush.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	SyntaxHighlighter.config.clipboardSwf = 'SyntaxHighlighter/clipboard.swf';
+	SyntaxHighlighter.all();
+});
+</script>
+<!-- SyntaxHighlighter end -->
+
+</body>
+</html>

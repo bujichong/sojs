@@ -1,0 +1,1 @@
+[{"id":"8","pid":"1","nodetype":0,"text":"财务部"},{"id":"9","pid":"1","nodetype":0,"text":"采购部","hide":true},{"id":"23","pid":"1","nodetype":1,"text":"人事部"},{"id":"26","pid":"23","nodetype":0,"text":"招聘专员"},{"id":"24","pid":"1","nodetype":1,"text":"实验室"}]

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<title>soScrollPage示例</title>
+<link rel="icon" href="xrzn_16_16.ico" type="image/x-icon" />
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+
+	<div id="gpsIntroBox">
+		<div id="pageScrollbox">
+
+			<div id="page1" class="page">
+				<h3 class="h3-title">稳定 &middot; 可靠 &middot; 高精度</h3>
+				<p class="p-intro center">全天候不间断运行，配合硬件高精度高可靠性定位</p>
+				<span class="s-i s-i-1"></span><span class="s-i s-i-2"></span><span class="s-i s-i-3"></span><span class="s-i s-i-4"></span>
+			</div>
+
+			<div id="page2" class="page page-t2">
+				<div class="page2-bg"></div>
+				<h3 class="h3-title">简洁 &middot; 易用 &middot; 兼容强</h3>
+				<p class="p-intro center">全屏地图操作，适应所有分辨率屏幕 <br />
+				蕴繁于简，简洁、优雅、易用的交互界面，学习零成本；</p>
+			</div>
+
+			<div id="page3" class="page">
+				<span class="s-p s-p-4"></span><span class="s-p s-p-3"></span><span class="s-p s-p-2"></span><span class="s-p s-p-1"></span>
+				<h3 class="h3-title">丰富的行业经验，先进的技术能力</h3>
+				<p class="p-intro">符合行业标准，全面支持行业 <em class="red fs118">808，809协议</em>；<br />
+				采用先进的 <em class="red">html5 websocket</em> 技术和 <em class="red">MongoDB</em> 进行实时车辆数据上传下达，所及功能全程无刷新实现，充分发挥现代浏览器的性能，高速稳定，性能卓越，让系统操作更快捷流畅。</p>
+			</div>
+
+			<div id="page4" class="page page-t2">
+				<h3 class="h3-title h3-t2">安全成熟，承受更多，走的更远</h3>
+				<p class="p-intro">可调整的分布式分片集群数据设计，成熟的软硬件搭配，即时面对上万车辆同时在线并发传输数据，系统依然游刃有余。</p>
+				<span class="s-p4"></span>
+			</div>
+
+			<div id="page5" class="page">
+				<span class="s-s s-s-1"></span><span class="s-s s-s-2"></span>
+				<h3 class="h3-title">有所同，有所不同</h3>
+				<p class="p-intro">系统功能完整，囊括市面上同行的主要功能，更有丰富清晰的报表、全方位多角度的轨迹回放和油位分析功能，让你对车辆进行实时监控的同时，更可以对车辆的历史情况了如指掌，决策分秒必争。</p>
+			</div>
+			<div id="page6" class="page">
+				<a class="a-test" href="http://gps.xrzn168.com/">立即体验</a>
+				<span class="s-sys">祥瑞智能系统</span>
+			</div>
+		</div>
+
+	</div>
+
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/soScrollPage.js"></script>
+<script type="text/javascript">
+var an = [
+	//0
+	{"in":[
+			{o:'.h3-title',
+				fn : {css:{top:'-150px'},addClass:'h3-now'},
+				fx:[{animate:{top:'120px'},during:600}]
+			},
+			{o:'.p-intro',
+				fn : {css:{top:'-250px'},addClass:'p-now'},
+				fx:[{animate:{top:'250px'},during:800}]
+			},
+			{o:'.s-i-1',fn:{css:{marginLeft:'1200px'}},fx:[{animate:{marginLeft:'-216px'},during:400,delay:400}]},
+			{o:'.s-i-2',fn:{css:{marginLeft:'1200px'}},fx:[{animate:{marginLeft:'-96px'},during:600,delay:400}]},
+			{o:'.s-i-3',fn:{css:{marginLeft:'1200px'}},fx:[{animate:{marginLeft:'24px'},during:800,delay:400}]},
+			{o:'.s-i-4',fn:{css:{marginLeft:'1200px'}},fx:[{animate:{marginLeft:'144px'},during:1000,delay:400}]}
+		],
+		"out":[
+			{o:'.h3-title',
+				fn : {removeClass:'h3-now',removeAttr:'title'},
+				fx:[{animate:{top:'60px'},during:200,delay:400},{animate:{top:'1220px'},during:700}]
+			},
+			{o:'.p-intro',
+				fn : {removeClass:'p-now',removeAttr:'title'},
+				fx:[{animate:{top:'1250px'},during:600,delay:600}]
+			},
+			{o:'.s-i-1',fx:[{animate:{marginLeft:'-1200px'},during:400}]},
+			{o:'.s-i-2',fx:[{animate:{marginLeft:'-1200px'},during:600}]},
+			{o:'.s-i-3',fx:[{animate:{marginLeft:'-1200px'},during:800}]},
+			{o:'.s-i-4',fx:[{animate:{marginLeft:'-1200px'},during:1000}]}
+		]
+	},
+	//1
+	{"in":[
+			{o:'.h3-title',
+				fn : {addClass:'h3-now'},
+				fx:[{animate:{left:'50%'},during:600}]
+			},
+			{o:'.p-intro',
+				fn : {addClass:'p-now'},
+				fx:[{animate:{left:'50%'},during:800,callback:function () {
+					$('.page2-bg').fadeIn();
+				}}]
+			}
+		],
+		"out":[
+			{o:'.h3-title',
+				fn : {removeClass:'h3-now',removeAttr:'title'},
+				fx:[{animate:{left:'-100%'},during:600}]
+			},
+			{o:'.p-intro',
+				fn : {removeClass:'p-now',removeAttr:'title'},
+				fx:[{animate:{left:'200%'},during:600,callback:function (){
+					$('.page2-bg').fadeOut();
+				}}]
+			}
+		]
+	},
+	//2
+	{"in":[
+			{o:'.h3-title',
+				fn : {addClass:'h3-now'},
+				fx:[{animate:{top:'120px',opacity:1},during:600}]
+			},
+			{o:'.p-intro',
+				fn : {addClass:'p-now'},
+				fx:[{animate:{top:'250px',opacity:1},during:800}]
+			},
+			{o:'.s-p-1',fx:[{animate:{marginRight:'-520px'},during:400,delay:400}]},
+			{o:'.s-p-2',fx:[{animate:{marginRight:'-600px'},during:600,delay:400}]},
+			{o:'.s-p-3',fx:[{animate:{marginRight:'-680px'},during:800,delay:400}]},
+			{o:'.s-p-4',fx:[{animate:{marginRight:'-780px'},during:1000,delay:400}]}
+		],
+		"out":[
+			{o:'.h3-title',
+				fn : {removeClass:'h3-now',removeAttr:'title'},
+				fx:[{animate:{top:'250px',opacity:0},during:600,delay:400}]
+			},
+			{o:'.p-intro',
+				fn : {removeClass:'p-now',removeAttr:'title'},
+				fx:[{animate:{top:'380px',opacity:0},during:400,delay:400}]
+			},
+			{o:'.s-p-1',fx:[{animate:{marginRight:'-1800px'},during:1000}]},
+			{o:'.s-p-2',fx:[{animate:{marginRight:'-1800px'},during:800}]},
+			{o:'.s-p-3',fx:[{animate:{marginRight:'-1800px'},during:600}]},
+			{o:'.s-p-4',fx:[{animate:{marginRight:'-1800px'},during:400}]}
+		]
+	},
+	//3
+	{"in":[
+			{o:'.h3-title',
+				fn : {addClass:'h3-now'},
+				fx:[{animate:{left:'50%'},during:600}]
+			},
+			{o:'.p-intro',
+				fn : {addClass:'p-now'},
+				fx:[{animate:{left:'50%'},during:800}]
+			},
+			{o:'.s-p4',fx:[{animate:{top:'320px'},during:1000,delay:400}]}
+		],
+		"out":[
+			{o:'.h3-title',
+				fn : {removeClass:'h3-now',removeAttr:'title'},
+				fx:[{animate:{left:'-100%'},during:400,delay:400}]
+			},
+			{o:'.p-intro',
+				fn : {removeClass:'p-now',removeAttr:'title'},
+				fx:[{animate:{left:'200%'},during:500,delay:400}]
+			},
+			{o:'.s-p4',fx:[{animate:{top:'1500px'},during:800}]}
+		]
+	},
+	//4
+	{"in":[
+			{o:'.h3-title',
+				fn : {addClass:'h3-now'},
+				fx:[{animate:{top:'120px'},during:400}]
+			},
+			{o:'.p-intro',
+				fn : {addClass:'p-now'},
+				fx:[{animate:{marginRight:'-430px'},during:500}]
+			},
+			{o:'.s-s-1',fx:[{animate:{marginLeft:'-440px'},during:700}]},
+			{o:'.s-s-2',fx:[{animate:{marginLeft:'-300px'},during:500}]}
+		],
+		"out":[
+			{o:'.h3-title',
+				fn : {removeClass:'h3-now',removeAttr:'title'},
+				fx:[{animate:{top:'-150px'},during:800}]
+			},
+			{o:'.p-intro',
+				fn : {removeClass:'p-now',removeAttr:'title'},
+				fx:[{animate:{marginRight:'-1500px'},during:600}]
+			},
+			{o:'.s-s-1',fx:[{animate:{marginLeft:'-1800px'},during:500}]},
+			{o:'.s-s-2',fx:[{animate:{marginLeft:'-1800px'},during:700}]}
+		]
+	},
+	//5
+	{"in" : [			
+			{o:'.a-test',fx:[{animate:{marginTop:'-70px',opacity:1},during:600}]},
+			{o:'.s-sys',fx:[{animate:{marginTop:'-5px',opacity:1},during:1000}]}
+		],
+	"out" : [
+			{o:'.a-test',fx:[{animate:{marginTop:'-40px',opacity:0},during:900}]},
+			{o:'.s-sys',fx:[{animate:{marginTop:'-55px',opacity:0},during:600}]}
+		]
+	}
+];
+
+
+
+$(function () {
+	var ss = $('#gpsIntroBox').soScrollPage({
+		animateOpt : an
+	});
+	window.console && console.log(ss);
+})
+
+</script>
+
+</body>
+</html>

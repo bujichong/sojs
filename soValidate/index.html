@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>表单验证 soValidate</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<div class="wrapper">
+
+<h1>soValidate 1.0 验证框架</h1>
+<div class="intro-box">
+<h2 class="h2-title">soValidate 参数 </h2>
+<pre class="brush:javascript">
+$(form).soValidate({
+	attr : 'validate',//获取验证的标签，默认是 validate
+	quickAttr : 'class',//获取快捷验证的标签，默认采用 class
+	errorCls : 'txt-err',//input出错时，添加的class，默认是txt-err
+	msgCls : 'em-errMes',//错误提示信息的class
+	msgPos : null,//用来显示错误信息的盒子
+	inputPar : '.p-item',//如果不设置具体的msgPos，就将错误信息放在inputPar标签内,当前input的父级对象
+	errDiyAttr : 'errorDiy',//自定义验证错误属性标签，注：一旦自定义错误的样式属性，clearArea清除样式方法会失效
+	trim : true,//是否对验证填写框做tirm截取，默认为是
+	inInputs : null,//添加额外的验证对象
+	exInputs :null,//排除已包含的验证对象
+	validate : true,//默认开启验证
+	submitBtn : null,//提交按钮，默认无，取form表单对象内部的submit按钮
+	submit : function (form) {//默认验证成功提交submit事件
+		form.submit();
+	},
+	fail : function (form,failInputArr) {//验证失败事件(返回form和验证失败的inputs)
+	}
+});
+</pre>
+<br />
+
+	<p class="p-author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2013.7.30</p>
+</div>
+
+<div class="intro-box">
+ <h3 class="red">Html：</h3>
+<pre class="brush:html">
+&lt;p class="p-item"&gt;
+	&lt;input type="text" id="username" class="txt required['请填写昵称']" name="nicename" value="" /&gt;
+	&lt;!-- style1，简写在class中： type[msg] || type['msg'] || type["msg"] --&gt;
+&lt;/p&gt;
+
+&lt;p class="p-item"&gt;
+	&lt;input type="text" class="txt" validate="{required : '请输入联系方式' , phone: true}" name="address" value="" /&gt;
+	&lt;!-- style2，validate属性中json格式： validate="{type : msg , type : true}"  --&gt;
+&lt;/p&gt;
+
+&lt;p class="p-item"&gt;
+	&lt;input type="text" id="password" class="txt" validate="{required:'请输入密码',len:{opt:[3,17],msg:'请设置4到16位的密码'}}" 
+	errorDiy="{errorCls:'txt-diy',msgCls:'msg-err',msgPos:'#msgWrap'}" name="password" value="" /&gt;
+	&lt;!-- style3，validate中完整格式： validate="{type : { opt : optObject , msg : msgStr } }"  --&gt;
+	&lt;!-- 自定义错误信息显示 : errorDiy="{errorCls:'错误输入时input class',msgCls:'错误输入时 msg class',msgPos:'obj 错误输入时定位到何处显示'}" --&gt;
+&lt;/p&gt;
+
+</pre>
+<br />
+ <h3 class="red">Js：</h3>
+<pre class="brush:javascript">
+	var $formA = $('.form-a').soValidate({
+		submit : function (form) {//提交事件
+			console.log(form.serializeObject());
+			alert('success');
+		},
+		fail : function (form,failInputArr) {//验证失败时
+			console.log(failInputArr);//log失败的inputs
+		}
+	});
+
+	//定义$formA后，$formA拥有以下几个方法：
+	$formA.validate(opt);//可以重新定义默认设置的参数, opt为参数对象，所有可设参数查看顶部默认
+	$formA.getInputs();//返回当前所有范围内的inputs(无论是否添加了验证条件)
+	$formA.addInputs(inputs);//临时增加新的验证inputs inputs为 dom数组如 'input.txt','.clude :input'，执行完返回更新后的Inputs;
+	$formA.removeInputs(inputs);//临时排除已验证inputs，执行完返回更新后的Inputs
+	$formA.addArea(InputsParent);//临时增加验证区域，如 : '.include','#areaGroup'，执行完返回更新后的Inputs
+	$formA.clearArea(InputsParent);//临时清除验证区域，并清除此区域默认验证样式，执行完返回更新后的Inputs
+	$formA.destroy();//销毁验证
+
+	//示例
+	$('.btn-must').click(function () {
+		$formA.addInputs( '.exclude :input');//临时添加新的验证input
+	});
+	$('.btn-unbind').click(function () {
+		$formA.destroy();//销毁验证
+	});
+	$('.btn-exclude').click(function () {
+		var newI = $formA.removeInputs( 'div.exclude :input');//临时排除不需要验证的input，执行完返回更新后的Inputs
+		window.console && console.log(newI);
+	});
+
+	$('.btn-getInputs').click(function () {
+		window.console && console.log($formA.getInputs());//getInputs方法返回当前验证的inputs
+	});
+
+</pre>
+</div>
+
+	<!-- stockeNotice -->
+<div class="intro-box">
+	<h3 class="red">示例：</h3>
+		<form class="form-a" action="test.html" method="post">
+
+			<p id="msgWrap"></p>
+
+			<!-- 简写在class中： type[msg] || type['msg'] || type["msg"] -->
+			<p class="p-item"><label class="lab-item">昵称：</label><input type="text" id="username" class="txt required['请填写昵称']" name="nicename" value="" /></p>
+
+			<!-- validate="{type : msg , type : true} -->
+			<p class="p-item"><label class="lab-item">联系方式：</label><input type="text" class="txt" validate="{required:'请输入联系方式'}" name="address" value="" /></p>
+
+			<!-- {type : { opt : optObject , msg : msgStr } } -->
+			<!-- 自定义错误信息显示情况 : errorDiy="{errorCls:'错误输入时input class',msgCls:'错误输入时 msg class',msgPos:'obj 错误输入时定位到何处显示'}" -->
+			<p class="p-item"><label class="lab-item">密码：</label><input type="text" id="password" class="txt" validate="{required:'请输入密码',len:{opt:[3,17],msg:'请设置4到16位的密码'}}" errorDiy="{errorCls:'txt-diy',msgCls:'msg-err',msgPos:'#msgWrap'}" name="password" value="" /></p>
+
+
+			<p class="p-item"><label class="lab-item">重复密码：</label><input type="text" class="txt" validate="{required:true,equalTo:{opt:'#password'}}" name="passwordAgain" value="" /></p>
+
+			<!-- 临时添加或排除验证inputs -->
+			<p class="p-item"><label class="lab-item" /><input class="rad rad-deliver-style" type="radio" checked="checked" name="radDeliver" />标准配送</label>
+				<label class="lab-item" /><input class="rad rad-deliver-style rad-deliver-self" type="radio" name="radDeliver" />预约配送：</label>
+				<select title="请选择预约送货日期" class="drop" validate="{required : '请选择预约送货日期'}" id="drop-reservday">
+					<option value="">----请选择----</option>
+					<option value="20131124">2013-11-24[周日]</option>
+					<option value="20131125">2013-11-25[周一]</option>
+					<option value="20131126">2013-11-26[周二]</option>
+					<option value="20131127">2013-11-27[周三]</option>
+					<option value="20131128">2013-11-28[周四]</option>
+					<option value="20131129">2013-11-29[周五]</option>
+					<option value="20131130">2013-11-30[周六]</option>
+					<option value="20131201">2013-12-01[周日]</option>
+					<option value="20131202">2013-12-02[周一]</option>
+					<option value="20131203">2013-12-03[周二]</option>
+				</select>
+
+				<select title="请选择预约送货时间" class="drop" validate="{required : '请选择预约送货时间'}" id="drop-reservtime">
+					<option value="">----请选择----</option>
+					<option value="090000">9:00-13:00</option>
+					<option value="130000">13:00-18:00</option>
+					<option value="180000">18:00-21:00</option>
+				</select>
+			</p>
+
+			<!-- 临时添加或排除验证区域 -->
+			<p class="p-item">
+				<label class="lab-item"><em class="red">*</em> 发票类型：</label>
+				<label class="lab-invoice lab-norinvoice" for="rad-nor-invoice"><input class="rad rad-invoice" type="radio" id="rad-nor-invoice" checked="checked"name="rad2"/>普通发票</label>
+				<label class="lab-invoice lab-taxinvoice" for="rad-tax-invoice"><input class="rad rad-invoice rad-tax-invoice" type="radio" id="rad-tax-invoice" name="rad2"/>增值税发票</label>
+			</p>
+
+			<div class="taxInvoiceBox">
+					<p class="p-item"><label class="lab-item" for="txt-company"><em class="red">*</em> 公司名称：</label><input class="txt" validate="{required : '请填写公司名称'}" id="txt-company" type="text" /></p>
+
+					<p class="p-item"><label class="lab-item" for="txt-taxerid"><em class="red">*</em> 纳税人识别号：</label><input class="txt" validate="{required : '请填写纳税人识别号'}" id="txt-taxerid" type="text" /> <em class="em-tip" />纳税人识别号长度为15或18或20位。</em></p>
+
+					<p class="p-item"><label class="lab-item" for="txt-regaddr"><em class="red">*</em> <span class="s-regplace">注册地址：</span></label><input class="txt" validate="{required : '请填写注册地址'}" id="txt-regaddr" type="text" /></p>
+
+					<p class="p-item"><label class="lab-item" for="txt-regtele"><em class="red">*</em> 注册电话：</label><input class="txt" validate="{required : '请填写注册电话' , phone : true}" id="txt-regtele" type="text" /> <em class="em-tip">格式：0532-88939546</em></p>
+
+					<p class="p-item"><label class="lab-item" for="txt-bankname"><em class="red">*</em> 开户银行：</label><input class="txt" validate="{required : '请填写开户银行'}" id="txt-bankname" type="text" /></p>
+
+					<p class="p-item"><label class="lab-item" for="txt-bankaccount"><em class="red">*</em> 开户帐号：</label><input class="txt" validate="{required : '请填写开户账号' , number : '请填写正确的开户账号'}" id="txt-bankaccount" type="text" /></p>
+			</div>
+
+
+			<p class="p-item p-btn"><input type="submit" class="btn" name="btn_submit" value="确 定" /></p>
+		</form>
+
+	</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+</div>
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.soValidate.js"></script>
+<script type="text/javascript">
+$(function () {
+	var $formA = $('.form-a').soValidate({
+		exInputs : '.taxInvoiceBox :input,.drop',
+		submit : function (form) {
+			window.console && console.log(form.serializeObject());
+			alert('success');
+		},
+		fail : function (form,failInputs) {
+			window.console && console.log(failInputs);
+			var $failF = $(failInputs[0]);
+			$("html,body").stop().animate({'scrollTop': $failF.offset().top});//定位到第一个验证失败的对象
+			$failF.focus();
+		}
+	});
+
+	$('.rad-deliver-style').click(function () {//切换添加移除验证inputs
+		if ($(this).hasClass('rad-deliver-self')) {
+			$formA.addInputs('.drop');
+		}else {
+			$formA.removeInputs('.drop');
+		}
+	});
+
+	$('.lab-invoice').click(function () {//切换添加移除验证区域
+		if ($(this).hasClass('lab-taxinvoice')) {
+			$('.taxInvoiceBox').show();
+			$formA.addArea('.taxInvoiceBox');
+		}else {
+			$('.taxInvoiceBox').hide();
+			$formA.clearArea('.taxInvoiceBox');
+		}
+	});
+
+
+});
+
+</script>
+
+
+<!-- SyntaxHighlighter -->
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter/brush.css" />
+<script type="text/javascript" src="SyntaxHighlighter/brush.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	SyntaxHighlighter.config.clipboardSwf = 'SyntaxHighlighter/clipboard.swf';
+	SyntaxHighlighter.all();
+});
+</script>
+<!-- SyntaxHighlighter end -->
+
+</body>
+</html>

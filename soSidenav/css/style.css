@@ -1,0 +1,48 @@
+/* yui reset.css version: 2.5.2 */
+html{color:#000;background:#fff;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#333;}.clear{height:0;font-size:0;line-height:0;clear:both;}
+/* end of reset.css */
+
+
+body{
+font-size:0.75em;
+background:#fff;
+font-family:Verdana, Tahoma,Arial,Helvetica, sans-serif;
+text-align:center;
+color:#343434;
+}
+a{
+text-decoration:none;
+color:#343434;
+}
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.clearfix{*zoom:1;}
+
+
+/*--from now--*/
+
+.wrapper{
+padding:15px 0;
+width:980px;
+margin:0 auto;
+text-align:left;}
+
+.content{float:left;width:700px;padding:20px;border:1px solid #ccc;background:#f3f3f3;line-height:1.8em;}
+.content p{margin-bottom:1em;}
+
+.sidebar{float:right;width:220px;height:100px;background:#f3f3f3;border:1px solid #ccc;}
+
+.floatNav{text-align:left;filter:alpha(opacity=90);opacity:0.9;}
+.floatNav_ul{display:none;float:left;padding:10px;background:#f3f3f3;border:1px solid #ccc;width:100px;margin-left:-1px;line-height:1.2;}
+.floatNav_ul li{padding:3px 0;}
+.floatNav li.now a{color:#c00;font-weight:bold;}
+.span_showFloat{float:left;display:block;width:1em;line-height:1.2em;padding:5px;border:1px solid #ccc;background:#f3f3f3;z-index:5;cursor:hand;cursor:pointer;}
+.floatNav_show .span_showFloat{}
+.floatNav_show .floatNav_ul{display:block;}
+
+
+
+
+
+
+
+

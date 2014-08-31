@@ -19,142 +19,149 @@
 </head>
 
 <body>
-	<div class="wrapper">
+<div class="wrapper">
 
-		<h1>基于jQuery的网页拾色器：<span class="strong">soColorPacker 1.0</span>  <a  class="a_down" href="http://code.google.com/p/sochange-juqeryplugin/downloads/list">(点击下载)</a></h1>
-		<div class="allIntro">
-			<h2>所有参数：</h2>
-			<p class="blue">
-			$(obj).soColorPacker({ <br />
-			&nbsp;&nbsp;&nbsp;&nbsp;changeTarget:null, <span class="green">//颜色选择后填入或改变的目标对象，默认null为当前引用方法对象</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;textChange:true, <span class="green">//是否将颜色值填入target对象</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;colorChange:1, <span class="green">//值：0,1,2 ，0：不改变，1：改变文字颜色，2：改变背景颜色</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;selfBgChange:false,<span class="green">//改变自身背景颜色</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;size:2, <span class="green">//值：1,2,3，改变拾色器表现大小，1：小，2：中，3：大</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;x:0,<span class="green">////拾色器坐标x轴偏移量</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;y:20, <span class="green">//拾色器坐标y轴偏移量</span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;styleClass:null,<span class="green">//自定义添加class名，不能为默认的 <span class="red">"colorPackerBox"</span></span><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;callback:callback:function(){}<span class="green">//点击颜色单元返回事件</span><br />
-			});<br />
-			</p>
-			<p class="p_other">未采用生僻的jquery特性，能兼容jquery1.2.6以上所有版本；<br />min版2.5k，兼容所有主流浏览器，如有发现问题或有更好的改进方案，请反馈给我，十分感谢 :)</p>
-			<p class="p_author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2012.1.4</p>
-		</div>
+<h1>基于jQuery的网页拾色器：<span class="strong">soColorPacker 1.0</span>  <a  class="a_down" href="http://code.google.com/p/sochange-juqeryplugin/downloads/list">(点击下载)</a></h1>
+<div class="allIntro">
+<h2>所有参数：</h2>
+<pre class="brush:javascript">
+$(obj).soColorPacker({
+	changeTarget:null, //颜色选择后填入或改变的目标对象，默认null为当前引用方法对象
+	textChange:true, //是否将颜色值填入target对象
+	colorChange:1, //值：0,1,2 ，0：不改变，1：改变文字颜色，2：改变背景颜色
+	selfBgChange:false,//改变自身背景颜色
+	size:2, //值：1,2,3，改变拾色器表现大小，1：小，2：中，3：大
+	x:0,////拾色器坐标x轴偏移量
+	y:20, //拾色器坐标y轴偏移量
+	styleClass:null,//自定义添加class名，不能为默认的 "colorPackerBox"
+	callback:callback:function(){}//点击颜色单元返回事件
+});
+</pre>
 
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt" id="txt_pack_1" name="txt" /></p>
-			</div>
-			<div class="introArea">
-				<h2>1- 默认模式</h2>
-				<p class="p_code"><code>$('#txt_pack_1').soColorPacker();</code></p>
-				<p class="green">
-				//默认参数，选择颜色后直接赋值至引用方法对象<br /></p>
-			</div>
-		</div>
+<p class="p_other">未采用生僻的jquery特性，能兼容jquery1.2.6以上所有版本；<br />min版2.5k，兼容所有主流浏览器，如有发现问题或有更好的改进方案，请反馈给我，十分感谢 :)</p>
+<p class="p_author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2012.1.4</p>
+</div>
 
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt" id="txt_pack_2" name="txt" value=""/><img id="img_colorPack_2" class="hover" src="images/color.gif" alt="" /></p>
-				<p><span id="title_pack_22">色值</span><img id="img_colorPack_22" class="hover" src="images/color.gif" alt="" /></p>
-				<p><input type="text" class="txt" id="txt_pack_23" name="txt" value=""/><span id="span_pick_23" class="span_colorPacker">选择颜色</span></p>
-			</div>
-			<div class="introArea">
-				<h2>2- 颜色选择框选色</h2>
-				<p class="p_code"><code>$('#img_colorPack_2').soColorPacker({<span class="green">// 图片为操作对象</span><br />
-					changeTarget:'#txt_pack_2',<span class="green">// 目标对象为文本框#txt_pack_2</span><br />
-					selfBgChange:true<span class="green">// 开启自身背景改变属性</span><br />
-				});</code></p>
-				<p class="green">
-				//通过指定target对象和开启自身背景改变属性，我们可以将颜色赋值对象和引用方法对象分开显示<br /></p>
-			</div>
-		</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt" id="txt_pack_1" name="txt" /></p>
+</div>
+<div class="introArea">
+<h2>1- 默认模式</h2>
+<pre class="brush:javascript">
+$('#txt_pack_1').soColorPacker();
+//默认参数，选择颜色后直接赋值至引用方法对象
+</pre>
+</div>
+</div>
 
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt" id="txt_pack_3" name="txt" value=""/></p>
-				<p><input type="text" class="txt" id="txt_pack_32" name="txt" value=""/></p>
-			</div>
-			<div class="introArea">
-				<h2>3- 改变对象背景色，使用不同尺寸的拾色器</h2>
-				<p class="p_code"><code>$('#img_colorPack_3').soColorPacker({<br />
-					size:3',<span class="green">// 使用大尺寸拾色器</span><br />
-					colorChange:2<span class="green">// 颜色改变模式选择2，为改变背景色</span><br />
-				});</code></p>
-				<p class="green">
-				//可以通过size值为1到3选择适合实际情况的选择器大小，colorChange值0到2来选择改变对象的颜色属性<br /></p>
-			</div>
-		</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt" id="txt_pack_2" name="txt" value=""/><img id="img_colorPack_2" class="hover" src="images/color.gif" alt="" /></p>
+<p><span id="title_pack_22">色值</span><img id="img_colorPack_22" class="hover" src="images/color.gif" alt="" /></p>
+<p><input type="text" class="txt" id="txt_pack_23" name="txt" value=""/><span id="span_pick_23" class="span_colorPacker">选择颜色</span></p>
+</div>
+<div class="introArea">
+<h2>2- 颜色选择框选色</h2>
+<pre class="brush:javascript">
+$('#img_colorPack_2').soColorPacker({
+// 图片为操作对象
+	changeTarget:'#txt_pack_2',// 目标对象为文本框#txt_pack_2
+	selfBgChange:true// 开启自身背景改变属性
+});
+//通过指定target对象和开启自身背景改变属性，我们可以将颜色赋值对象和引用方法对象分开显示
+</pre>
+</div>
+</div>
 
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt txt_250" id="txt_pack_4" name="txt" value="文字标题，我想直接看效果，不想看到色值"/></p>
-				<p><input type="text" class="txt txt_250" id="txt_pack_42" name="txt" value="文字标题，我想直接看效果，不想看到色值"/></p>
-				<p><input type="text" class="txt txt_250" id="txt_pack_43" name="txt" value="文字标题，我想直接看效果，不想看到色值"/><span id="span_pick_43" class="span_colorPacker">选择颜色</span></p>
-				<p><input type="text" class="txt txt_250" id="txt_pack_44" name="txt" value="文字标题，我想直接看效果，不想看到色值"/><span id="span_pick_44" class="span_colorPacker">选择颜色</span> <span id="span_pick_45" class="span_colorPacker">选择颜色</span></p>
-				<p><span id="span_title_46">文字标题，我想直接看效果，不想看到色值</span><span id="span_pick_46" class="span_colorPacker">选择颜色</span> <span id="span_pick_47" class="span_colorPacker">选择颜色</span></p>
-				<p><span id="span_title_48">文字标题，我想直接看效果，不想看到色值</span></p>
-			</div>
-			<div class="introArea">
-				<h2>4-不改变对象文字</h2>
-				<p class="p_code"><code>$('#txt_pack_4').soColorPacker({<br />
-					textChange:false<span class="green">// 关闭改变文本属性</span><br />
-				});</code></p>
-				<p class="green">
-				//如示例<br /></p>
-			</div>
-		</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt" id="txt_pack_3" name="txt" value=""/></p>
+<p><input type="text" class="txt" id="txt_pack_32" name="txt" value=""/></p>
+</div>
+<div class="introArea">
+<h2>3- 改变对象背景色，使用不同尺寸的拾色器</h2>
+<pre class="brush:javascript">
+$('#img_colorPack_3').soColorPacker({
+	size:3',// 使用大尺寸拾色器
+	colorChange:2// 颜色改变模式选择2，为改变背景色
+});
+//可以通过size值为1到3选择适合实际情况的选择器大小，colorChange值0到2来选择改变对象的颜色属性
+</pre>
+</div>
+</div>
 
-
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt" id="txt_pack_5" name="txt" value=""/></p>
-				<p><input type="text" class="txt" id="txt_pack_52" name="txt" value=""/></p>
-				<p><input type="text" class="txt" id="txt_pack_53" name="txt" value=""/></p>
-				<p><input type="text" class="txt" id="txt_pack_54" name="txt" value=""/></p>
-				<p><select class="drop" name="drop">
-				  <option value="0" selected="selected">请选择...</option>
-				  <option value="1">中文</option>
-				  <option value="2">English</option>
-				</select></p>
-			</div>
-			<div class="introArea">
-				<h2>5-自定义拾色器样式</h2>
-				<p class="p_code"><code>$('#txt_pack_5').soColorPacker({<br />
-					styleClass:'colorPick_my'<span class="green">// 自定义添加样式类名</span><br />
-				});</code></p>
-				<p class="green">
-				//通过添加自定义类名，可以自定义单元宽度来改变选择器大小以及对应dom对象样式，对样式更熟悉一些的开发者可以更灵活的定义<br />
-				//调用bgIframe，解决ie6下select层级最高的bug，如果不需要兼容ie6，可不调用jquery.bgiframe-2.1.1.js</p>
-			</div>
-		</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt txt_250" id="txt_pack_4" name="txt" value="文字标题，我想直接看效果，不想看到色值"/></p>
+<p><input type="text" class="txt txt_250" id="txt_pack_42" name="txt" value="文字标题，我想直接看效果，不想看到色值"/></p>
+<p><input type="text" class="txt txt_250" id="txt_pack_43" name="txt" value="文字标题，我想直接看效果，不想看到色值"/><span id="span_pick_43" class="span_colorPacker">选择颜色</span></p>
+<p><input type="text" class="txt txt_250" id="txt_pack_44" name="txt" value="文字标题，我想直接看效果，不想看到色值"/><span id="span_pick_44" class="span_colorPacker">选择颜色</span> <span id="span_pick_45" class="span_colorPacker">选择颜色</span></p>
+<p><span id="span_title_46">文字标题，我想直接看效果，不想看到色值</span><span id="span_pick_46" class="span_colorPacker">选择颜色</span> <span id="span_pick_47" class="span_colorPacker">选择颜色</span></p>
+<p><span id="span_title_48">文字标题，我想直接看效果，不想看到色值</span></p>
+</div>
+<div class="introArea">
+<h2>4-不改变对象文字</h2>
+<pre class="brush:javascript">
+$('#txt_pack_4').soColorPacker({
+	textChange:false// 关闭改变文本属性
+});
+//如示例
+</pre>
+</div>
+</div>
 
 
-		<div class="eachBox">
-			<div class="demoBox">
-				<p><input type="text" class="txt" id="txt_pack_6" name="txt" value=""/></p>
-				<p><select class="drop" name="drop">
-				  <option value="0" selected="selected">请选择...</option>
-				  <option value="1">中文</option>
-				  <option value="2">English</option>
-				</select></p>
-			</div>
-			<div class="introArea">
-				<h2>6-点击颜色单元返回事件</h2>
-				<p class="p_code"><code>
-				$('#txt_pack_6').soColorPacker({<br />
-				&nbsp;&nbsp;callback:function (c) {<span class="green">//自定义点选颜色的返回事件</span><br />
-				&nbsp;&nbsp;&nbsp;&nbsp;alert('你选择的颜色是：'+c.color);<br />
-				&nbsp;&nbsp;}<br />
-				});</code></p>
-				<p class="green">
-				//如示例</p>
-			</div>
-		</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt" id="txt_pack_5" name="txt" value=""/></p>
+<p><input type="text" class="txt" id="txt_pack_52" name="txt" value=""/></p>
+<p><input type="text" class="txt" id="txt_pack_53" name="txt" value=""/></p>
+<p><input type="text" class="txt" id="txt_pack_54" name="txt" value=""/></p>
+<p><select class="drop" name="drop">
+<option value="0" selected="selected">请选择...</option>
+<option value="1">中文</option>
+<option value="2">English</option>
+</select></p>
+</div>
+<div class="introArea">
+<h2>5-自定义拾色器样式</h2>
+<pre class="brush:javascript">
+$('#txt_pack_5').soColorPacker({
+	styleClass:'colorPick_my'// 自定义添加样式类名
+});
+//通过添加自定义类名，可以自定义单元宽度来改变选择器大小以及对应dom对象样式，对样式更熟悉一些的开发者可以更灵活的定义
+//调用bgIframe，解决ie6下select层级最高的bug，如果不需要兼容ie6，可不调用jquery.bgiframe-2.1.1.js
+</pre>
+</div>
+</div>
 
-		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-	</div>
+<div class="eachBox">
+<div class="demoBox">
+<p><input type="text" class="txt" id="txt_pack_6" name="txt" value=""/></p>
+<p><select class="drop" name="drop">
+<option value="0" selected="selected">请选择...</option>
+<option value="1">中文</option>
+<option value="2">English</option>
+</select></p>
+</div>
+<div class="introArea">
+<h2>6-点击颜色单元返回事件</h2>
+<pre class="brush:javascript">
+$('#txt_pack_6').soColorPacker({
+	callback:function (c) {//自定义点选颜色的返回事件
+		alert('你选择的颜色是：'+c.color);
+	}
+});
+//如示例
+</pre>
+</div>
+</div>
+
+<br /><br /><br /><br /><br />
+
+</div>
 
 <script type="text/javascript">
 $('#txt_pack_1').soColorPacker();
@@ -183,11 +190,23 @@ $('#txt_pack_53').soColorPacker({styleClass:'colorPick_my3'});
 $('#txt_pack_54').soColorPacker({styleClass:'colorPick_my4'});
 
 $('#txt_pack_6').soColorPacker({
-	callback:function (c) {
-		alert('你选择的颜色是：'+c.color);
-	}
+callback:function (c) {
+alert('你选择的颜色是：'+c.color);
+}
 });
 </script>
+
+
+<!-- SyntaxHighlighter -->
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter/brush.css" />
+<script type="text/javascript" src="SyntaxHighlighter/brush.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+SyntaxHighlighter.config.clipboardSwf = 'SyntaxHighlighter/clipboard.swf';
+SyntaxHighlighter.all();
+});
+</script>
+<!-- SyntaxHighlighter end -->
 
 </body>
 </html>

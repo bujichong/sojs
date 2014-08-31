@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>标题</title>
+<link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.soMarquee.js"></script>
+<style type="text/css">
+.wrapper{background:#eee;}
+.scrollBox{position:relative;width:880px;margin:0 auto;background:#ddd;overflow:hidden;}
+.ul_scroll{height:110px;}
+.ul_scroll li{float:left;width:190px;height:90px;line-height:100px;text-align:center;margin:0 5px 10px;display:inline;}
+.ul_scroll a{display:block;width:188px;height:88px;border:1px solid #a30;background:#ccc;}
+.ul_scroll a:hover{background:#fc0;}
+
+.scrollBox_2{width:200px;height:330px;overflow:hidden;}
+
+</style>
+</head>
+<body>
+<div class="wrapper clearfix">
+	<ul class="ul_scroll ul_scroll_1 soMarquee" width="800" speed="2" pause="4000" data-marquee='{"step":5}'>
+		<li><a href="#1">1</a></li>
+		<li><a href="#2">2</a></li>
+		<li><a href="#3">3</a></li>
+		<li><a href="#4">4</a></li>
+		<li><a href="#5">5</a></li>
+
+		<li><a href="#">6</a></li>
+		<li><a href="#">7</a></li>
+		<li><a href="#">8</a></li>
+		<li><a href="#">9</a></li>
+	</ul>
+
+	<ul class="ul_scroll ul_scroll_3 soMarquee" direction="right" pause="0">
+		<li><a href="#1">1</a></li>
+		<li><a href="#2">2</a></li>
+		<li><a href="#3">3</a></li>
+		<li><a href="#4">4</a></li>
+		<li><a href="#5">5</a></li>
+
+		<li><a href="#">6</a></li>
+		<li><a href="#">7</a></li>
+		<li><a href="#">8</a></li>
+		<li><a href="#">9</a></li>
+	</ul>
+
+	<ul class="ul_scroll ul_scroll_2">
+		<li><a href="#1">1</a></li>
+		<li><a href="#2">2</a></li>
+		<li><a href="#3">3</a></li>
+		<li><a href="#4">4</a></li>
+		<li><a href="#5">5</a></li>
+
+		<li><a href="#">6</a></li>
+		<li><a href="#">7</a></li>
+		<li><a href="#">8</a></li>
+		<li><a href="#">9</a></li>
+		<li><a href="#">10</a></li>
+	</ul>
+
+</div>
+
+<div class="demo"></div>
+
+<script type="text/javascript">
+
+
+
+
+
+$(function () {
+	
+	$('.ul_scroll_2').soMarquee({
+		direction:'down',
+		wrapClass:'scrollBox_2',
+		height:300,
+		speed:20,
+		overEvent:function (li,i) {
+		},
+		clickEvent:function (li,i) {
+			console.log(i);
+			return false;
+		}
+	});
+})
+
+</script>
+
+</body>
+</html>

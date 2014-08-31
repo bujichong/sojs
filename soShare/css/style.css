@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* base yui reset.css, repair by haven long 090925*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;}table{border-collapse:collapse;border-spacing:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}ins{text-decoration:none;}del{text-decoration:line-through;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{font-size:100%;}.clear{height:0;font-size:0;line-height:0;clear:both;}
+
+html{color:#000;background:#fff;}
+
+body{
+font-size:0.75em;
+background:#fff;
+font-family:Verdana, Tahoma,Arial,Helvetica, sans-serif;
+text-align:center;
+color:#222;
+}
+a{
+text-decoration:none;
+color:#222;
+}
+a:hover{color:#B70000;}
+/* end of reset.css */
+
+/*all base*/
+.wrapper{
+position:relative;
+width:990px;
+margin:0 auto;
+text-align:left;
+overflow:hidden;}
+
+h1{font-size:1.17em;text-align:center; margin:20px; }
+h1 .strong{color:#CC0000;margin-left:3px;font-size:1.3em;}
+.a_down{color:#ff6600;text-decoration:underline; }
+
+.allIntro{
+background:#f9f9f9;
+border:1px solid #ddd;
+margin:10px 0;
+padding:15px;
+line-height:1.7em; }
+
+.p_other{
+font-size:1.17em;
+margin:20px 0 10px; }
+.p_author{
+font-size:1.17em;
+text-align:right;
+margin:0 10px 10px; }
+.p_author a{
+color:#cc0000;
+text-decoration:underline; }
+.p_author a:hover{text-decoration:none;}
+.eachBox{
+overflow:hidden;zoom:1;
+clear:both;
+padding:15px;
+background:#f9f9f9;
+border:1px solid #ddd;
+margin:0 0 10px;}
+
+.demoBox{
+float:left;
+width:620px;
+padding:2px;
+position:relative;}
+
+.introArea{
+float:left;
+margin-left:20px;
+display:inline;
+width:300px;
+line-height:1.7em; }
+
+.introArea h2{
+font-size:1.17em;
+padding:5px 0 10px;
+color:#c00;}
+
+.green{color:green;}
+.red{color:#CC0000;}
+.blue,code{
+font-size:1em;
+color:blue;
+font-family:Verdana;}
+
+a.a_mail{color:#FF6600;text-decoration:underline;}
+a.a_mail:hover{text-decoration:none;}
+
+
+/* s-share */
+.s-share .a-share{background:url(../images/sprite-share.png) no-repeat;}
+.s-share .a-share{display:-moz-inline-stack;display:inline-block;*display:inline;*zoom:1;width:16px;height:16px;margin-right:3px;overflow:hidden;vertical-align:middle;text-indent:-999em;overflow:hidden;text-indent:0\9;font-size:0em;line-height:0;color:#fff;}
+.s-share .a-share-qqZone{background-position:0 0;}
+.s-share .a-share-sina{background-position:-16px 0;}
+.s-share .a-share-qqwb{background-position:-32px 0;}
+.s-share .a-share-renren{background-position:-48px 0;}
+.s-share .a-share-kaixin{background-position:-64px 0;}
+.s-share .a-share-douban{background-position:-80px 0;}

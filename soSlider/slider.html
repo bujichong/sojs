@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "- //W3C //DTD XHTML 1.0 Transitional //EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>jQuery滑动条插件 soSlider 1.0</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="wrapper">
+
+<h1>jQuery滑动条插件 <span class="strong">soSlider 1.0</span>  <a  class="a_down" href="#">(点击下载)</a></h1>
+<div class="allIntro">
+<h2>所有参数：</h2>
+	<p class="blue">
+	$(obj).soSlider({ <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;type : 1, <span class="green"> //类型:1||2，1个滑动点，2个滑动点，默认为1个滑动点</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;bit :1, <span class="green"> //进位步长，默认为1</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;data:null, <span class="green"> //'min,max' 字符串格式，用逗号隔开数值，最小数和最大数</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;defaultPos:null, <span class="green"> //'point1,point2' 字符串格式，默认数值，1个滑动点1个数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;showRange : true, <span class="green"> //显示滑动区间</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;initEvent : function (){}, <span class="green"> //加载执行事件， initEvent : function(v1,v2){}提供2点对应数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;mMoveEvent : function () {}, <span class="green"> //移动执行事件， mMoveEvent : function(v1,v2){}提供2点对应数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;mUpEvent : function (){} <span class="green"> //鼠标按起执行事件， mUpEvent : function(v1,v2){}提供2点对应数值</span><br />
+	});<br />
+	</p>
+	<p class="p_author"><a href="http: //hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2013.09.04</p>
+</div>
+
+
+<div class="eachBox">
+
+	<div class="demoBox">
+		<p class="p-slide-num"><span  id="s-sliderNum0">0</span></p>
+		<p class="p-slider" id="slider1"></p>
+	</div>
+
+	<div class="introArea">
+		<h2>1- 单点模式 type : 1</h2>
+		<p class="p_code">
+			<code>
+&nbsp;&nbsp;&nbsp;&nbsp;$('#slider1').soSlider({<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data :'0,500', <span class="green"> //初始数据范围</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bit:50, <span class="green"> //以50为进制</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initEvent:function (v) { <span class="green"> //初始事件</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum0').html(v);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mMoveEvent:function (v) { <span class="green"> //移动事件</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum0').html(v);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+			</code>
+		</p>
+		<p class="green">注：默认为单点模式，不设置默认位置点，滑动点定位在起点和终点</p>
+	</div>
+
+</div>
+
+<div class="eachBox">
+
+	<div class="demoBox">
+		<p class="p-slide-num"><span  id="s-sliderNum">0</span><span  id="s-sliderNum2">0</span><span  id="s-sliderNum3"></span><span  id="s-sliderNum4"></span></p><br />
+		<p class="p-slider" id="slider2"></p><br /><br />
+	</div>
+
+	<div class="introArea">
+		<h2>2- 双点范围模式 type : 2</h2>
+		<p class="p_code">
+			<code>
+&nbsp;&nbsp;&nbsp;&nbsp;$('#slider2').soSlider({<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:2,<span class="green"> //双点范围模式</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data :'800,5000',<span class="green"> //初始数据范围</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaultPos : '1000,4000',<span class="green"> //默认双点数据</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bit:20,<span class="green"> //以20为进制</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initEvent : function (d1,d2) { <span class="green"> //初始事件</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum').html(d1);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum2').html(d2);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mMoveEvent : function (v1,v2) { <span class="green"> //移动事件</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum').html(v1);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum2').html(v2);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpEvent : function (v1,v2) { <span class="green"> //按起事件</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum3').html(v1);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#s-sliderNum4').html(v2);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;});
+			</code>
+		</p>
+	</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.soSlider.js"></script>
+<script type="text/javascript">
+
+$('#slider2').soSlider({
+	type:2,
+	data :'800,5000',
+	defaultPos : '1000,4000',
+	bit:20,
+	initEvent : function (d1,d2) {
+		$('#s-sliderNum').html(d1);
+		$('#s-sliderNum2').html(d2);
+	},
+	mMoveEvent : function (v1,v2) {
+		$('#s-sliderNum').html(v1);
+		$('#s-sliderNum2').html(v2);
+	},
+	mUpEvent : function (v1,v2) {
+		$('#s-sliderNum3').html(v1);
+		$('#s-sliderNum4').html(v2);
+	}
+});
+
+$('#slider1').soSlider({
+	data :'0,500',
+	bit:50,
+	initEvent:function (v) {
+		$('#s-sliderNum0').html(v);
+	},
+	mMoveEvent:function (v) {
+		$('#s-sliderNum0').html(v);
+	}
+});
+
+
+</script>
+
+
+</div>
+</body>
+</html>

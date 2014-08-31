@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>标题</title>
+<link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.soMmEvent.js"></script>
+<style type="text/css">
+.cont{background:#fdc;margin-bottom:10px;}
+.cont2{background:#9dc;margin-bottom:10px;}
+.show,.show2,.show3{font-size:3em;height:3em;font-weight:bold;color:#c00;text-align:center;padding:10px;}
+</style>
+</head>
+<body>
+<div class="wrapper clearfix">
+
+<div class="content">
+
+	<div class="cont">
+		<h2 class="h2_t">部分1</h2>
+		<p>各位三一同仁： <br />
+		为丰富员工业余生活，享受大自然“秀山丽水  奇洞”，三一车友会将举行第三期“亲水”主题自驾游活动，现将活动安排如下：</p>
+		<h2 class="h2_t">一、活动内容</h2>
+		<p>1.活动时间：2012年9月1日（周六） <br />
+		2.活动地点：湖南株洲攸县酒埠江旅游风景区<br />
+		3.行驶路线：公司西门——长永高速（约4公里）——长株高速（约39公里）——沪昆高速（约52公里）——醴陵东下高速（左拐直行约3公里）——左拐转106国道（往攸县方向约50公里）——左拐酒埠江大道（b42县道，约10公里）——酒埠江景区。</p>
+		<p>各位三一同仁： <br />
+		为丰富员工业余生活，享受大自然“秀山丽水  奇洞”，三一车友会将举行第三期“亲水”主题自驾游活动，现将活动安排如下：</p>
+		<h2 class="h2_t">一、活动内容</h2>
+		<p>1.活动时间：2012年9月1日（周六） <br />
+		2.活动地点：湖南株洲攸县酒埠江旅游风景区<br />
+		3.行驶路线：公司西门——长永高速（约4公里）——长株高速（约39公里）——沪昆高速（约52公里）——醴陵东下高速（左拐直行约3公里）——左拐转106国道（往攸县方向约50公里）——左拐酒埠江大道（b42县道，约10公里）——酒埠江景区。</p>
+
+	</div>
+
+	<div class="cont2">
+		<h2 class="h2_t">部分1</h2>
+		<p>各位三一同仁： <br />
+		为丰富员工业余生活，享受大自然“秀山丽水  奇洞”，三一车友会将举行第三期“亲水”主题自驾游活动，现将活动安排如下：</p>
+		<h2 class="h2_t">一、活动内容</h2>
+		<p>1.活动时间：2012年9月1日（周六） <br />
+		2.活动地点：湖南株洲攸县酒埠江旅游风景区<br />
+		3.行驶路线：公司西门——长永高速（约4公里）——长株高速（约39公里）——沪昆高速（约52公里）——醴陵东下高速（左拐直行约3公里）——左拐转106国道（往攸县方向约50公里）——左拐酒埠江大道（b42县道，约10公里）——酒埠江景区。</p>
+		<p>各位三一同仁： <br />
+		为丰富员工业余生活，享受大自然“秀山丽水  奇洞”，三一车友会将举行第三期“亲水”主题自驾游活动，现将活动安排如下：</p>
+		<h2 class="h2_t">一、活动内容</h2>
+		<p>1.活动时间：2012年9月1日（周六） <br />
+		2.活动地点：湖南株洲攸县酒埠江旅游风景区<br />
+		3.行驶路线：公司西门——长永高速（约4公里）——长株高速（约39公里）——沪昆高速（约52公里）——醴陵东下高速（左拐直行约3公里）——左拐转106国道（往攸县方向约50公里）——左拐酒埠江大道（b42县道，约10公里）——酒埠江景区。</p>
+	</div>
+</div>
+
+<div class="sidebar">
+<div style="color:green;font-size:1.5em;text-align:center;font-weight:bold;">按住鼠标在页面上切西瓜</div>
+<div class="show2"></div>
+<div class="show"></div>
+<div class="show3"></div>
+</div>
+
+
+<script type="text/javascript">
+
+
+
+
+
+$(function () {
+	var show = $('.show');
+	var show2 = $('.show2');
+	var show3 = $('.show3');
+
+	$(document).soMmEvent({
+		lEvent : function(){show2.text('←');},
+		rEvent : function(){show2.text('→');},
+		tEvent : function(){show2.text('↑');},
+		bEvent : function(){show2.text('↓');},
+
+		ltEvent : function(){show2.text('↖');},
+		rtEvent : function(){show2.text('↗');},
+		lbEvent : function(){show2.text('↙');},
+		rbEvent : function(){show2.text('↘');}
+	});
+
+	$('.cont').soMmEvent({
+		lEvent : function(){show.text('←');},
+		rEvent : function(){show.text('→');},
+		tEvent : function(){show.text('↑');},
+		bEvent : function(){show.text('↓');},
+
+		ltEvent : function(){show.text('↖');},
+		rtEvent : function(){show.text('↗');},
+		lbEvent : function(){show.text('↙');},
+		rbEvent : function(){show.text('↘');}
+	});
+
+	$('.cont2').soMmEvent({
+		lEvent : function(){show3.text('←');},
+		rEvent : function(){show3.text('→');},
+		tEvent : function(){show3.text('↑');},
+		bEvent : function(){show3.text('↓');},
+
+		ltEvent : function(){show3.text('↖');},
+		rtEvent : function(){show3.text('↗');},
+		lbEvent : function(){show3.text('↙');},
+		rbEvent : function(){show3.text('↘');}
+	});
+
+
+})
+
+</script>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>jquery滚动至对象 soScrollTo 1.0</title>
+<link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+</head>
+<body>
+<div class="wrapper">
+	<h1>jquery滚动至对象插件 soScrollTo 1.0</h1>
+
+<ul class="ul-scrollNav">
+	<li class="title">插件API列表</li>
+	<li><a href="#soScrollTo">soScrollTo</a></li>
+	<li><a href="#soChange">soChange</a></li>
+	<li><a href="#soBanner">soBanner</a></li>
+	<li><a href="#soTabChange">soTabChange</a></li>
+	<li><a href="#soLazy">soLazy</a></li>
+	<li><a href="#soShare">soShare</a></li>
+	<li><a href="#soEndMail">soEndMail</a></li>
+	<li><a href="#soSlider">soSlider</a></li>
+	<li><a href="#sobox">sobox</a></li>
+	<li><a href="#">返回顶部</a></li>
+</ul>
+
+<!-- soScrollTo -->
+	<div id="soScrollTo" class="intro-box">
+		<h2 class="h2-title">soScrollTo 参数 <strong class="orange">（滚动至对象插件）</strong></h2>
+		<p class="blue">
+			$(obj).soScrollTo({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;direction : 'y',  <span class="green">//'y'||'x' 滚动方向 垂直 || 水平</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;speed : 800,  <span class="green">//间隔时间</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;easeType : 'easeInOutExpo'  <span class="green">//'easeInOutExpo'||'swing'</span><br />
+			});<br />
+		</p>
+		<p class="red">使用对象为 a 链接，指向id为锚点链接的对象 如： &lt;a href="#soChange"&gt;soChange&lt;/a&gt; 指向id为box-soChange 的对象</p>
+	</div>
+
+<!-- soChange -->
+	<div id="soChange" class="intro-box">
+		<h2 class="h2-title">soChange 参数 <strong class="orange">（对象切换插件）</strong></h2>
+		<p class="blue">
+			$(obj).soChange({ <br />
+
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbObj:null,  <span class="green">// 导航对象，默认为空</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;btnPrev:null,  <span class="green">// 按钮上一个，默认为空</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;btnNext:null,  <span class="green">// 按钮下一个。默认为空</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;changeType:'fade', <span class="green">// 切换方式，可选：fade,slide，默认为fade，</span><span class="red">1.6版新增方法，详见例3-定义对象切换方式为slide</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbNowClass:'now',  <span class="green">// 导航对象当前的class,默认为now</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbOverEvent:true, <span class="green">// 鼠标经过thumbObj时是否切换对象，默认为true，为false时，只有鼠标点击thumbObj才切换对象</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;slideTime:1000,  <span class="green">// 平滑过渡时间，默认为1000ms，为0或负值时，忽略changeType方式，切换效果为直接显示隐藏</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;autoChange:true,  <span class="green">// 是否自动切换，默认为true</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;clickFalse:true, <span class="green">// 导航对象点击是否链接无效，默认是return false链接无效，当thumbOverEvent为false时，此项必须为true，否则鼠标点击事件冲突</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;overStop:true, <span class="green">// 鼠标经过切换对象时，是否停止切换，并于鼠标离开后重启自动切换，前提是已开启自动切换</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;changeTime:5000,  <span class="green">// 对象自动切换时间，默认为5000ms，即5秒</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;delayTime:300  <span class="green">// 鼠标经过时对象切换迟滞时间，推荐值为300ms</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;callback:function(prev,now){}  <span class="green">// 切换返回函数，内部提供2个参数:切换前 index值 prev,当前 index值 now</span> <span class="red">1.6版新增方法</span><br />
+
+			});<br />
+		</p>
+	</div>
+
+<!-- soBanner -->
+	<div id="soBanner" class="intro-box">
+		<h2 class="h2-title">soBanner 参数 <strong class="orange">（根据商城banner应用，使用soChange扩展）</strong></h2>
+		<p class="blue">
+			$(obj).soBanner({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;cont :'.slide-each',<span class="green">//切换对象，默认 .slide-each</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbUlCls:'ul-slide',<span class="green">//thumb ul class名，默认ul-slide</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbLiCls : 'li-slide',<span class="green">//thumb li class名，默认li-slide</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbLiNowCls : 'li-slide-now',<span class="green">//thumb li 当前 class名，默认li-slide-now</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;thumbNumber : false,<span class="green">//thumb内是否显示数字，默认false</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;changeDelayTime :0,<span class="green">//banner切换延迟时间</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;imgDelayTime :4000,<span class="green">//图片延迟加载时间</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;lazyImgTag : 'src4',<span class="green">//如果有img lazy，默认使用标签 src4</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;changeTime: 5000,<span class="green">//banner切换时间，soChange事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;slideTime:500,<span class="green">//banner动画过度时间，soChange事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;autoChange:true,<span class="green">//是否自动切换，soChange事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;callback : function(){}<span class="green">//切换间事件，soChange事件</span><br />
+			});<br />
+		</p>
+	</div>
+<!-- soTabChange -->
+	<div id="soTabChange" class="intro-box">
+		<h2 class="h2-title">soTabChange 参数 <strong class="orange">（根据商城tab应用，使用soChange扩展）</strong></h2>
+		<p class="blue">
+			$(obj).soTabChange({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;cont :'.tab-cont',  <span class="green">// 默认切换对象类名</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;title : '.tab-title', <span class="green">// 默认切换标题类名</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;titleNowCls : 'tab-title-now', <span class="green">// 默认切换标题当前时样式</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;slideTime:0,  <span class="green">// 默认切换过渡时间</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;autoChange:false,  <span class="green">// 默认不自动切换</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;clickFalse:false,  <span class="green">// 默认点击标题不返回默认事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;callback : function(prev,now){}  <span class="green">// 切换时事件，默认已内置懒加载tab图片，同样提供2个参数:切换前 index值 prev,当前 index值</span><br />
+			});<br />
+		</p>
+	</div>
+
+<!-- soLazy -->
+	<div id="soLazy" class="intro-box">
+		<h2 class="h2-title">soLazy 参数 <strong class="orange">（延迟懒加载插件）</strong></h2>
+		<p class="blue">
+			$(obj).soLazy({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;type:"scroll",  <span class="green">// scroll 或 delay 延迟加载方式</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;imgTag:"src2",  <span class="green">// 真实img路径，默认src路径存放同一统一默认图片，如 "blank.png"</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;defHeight::-100,  <span class="green">// 此参数只对scroll方法有效，即懒加载图片离屏幕下方的距离，在此距离时开始加载图片真实路径</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;defDelay:4000, <span class="green">// 此参数只对delay方式有效，即延迟加载时间，</span><br />
+			});<br />
+		</p>
+	</div>
+
+<!-- soShare -->
+	<div id="soShare" class="intro-box">
+		<h2 class="h2-title">soShare 参数 <strong class="orange">（外平台分享插件）</strong></h2>
+		<p class="blue">
+			$(obj).soShare({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;space : ['sina','qq','qZone','renren','kaixin','douban'], <span class="green">// 分享平台，可选，分享按钮顺序为数组顺序，不填或者为 'all' 默认为所有分享平台</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;url : location.href, <span class="green">// 分享链接，默认为当前页面地址栏地址</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;title : encodeURIComponent($('title').text()), <span class="green">// 分享标题，默认为当前页面标题</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;pic : null, <span class="green">// 分享图片，直接给图片路径，否则根据平台默认有或无</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;content :null <span class="green">// 分享内容</span><br />
+			});<br />
+		</p>
+	</div>
+
+<!-- soEndMail -->
+	<div id="soEndMail" class="intro-box">
+		<h2 class="h2-title">soEndMail 参数 <strong class="orange">（联想Email后缀名）</strong></h2>
+		<p class="blue">
+		$('obj').soEndMail({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;mail :["163.com","qq.com","126.com","sina.com","sohu.com","yahoo.com.cn","hotmail.com","21cn.com","tom.com","yeah.net","gmail.com",<br />"yahoo.cn","263.net","msn.com","foxmail.com","haier.com","yahoo.com","sogou.com","eyou.com","139.com","sina.com.cn"], <span class="green">// 默认有最常用的邮箱后缀，更新数组替换</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;listWrap :null<span class="green">// 存放mail的ul盒子</span><br />
+	});<br />
+		</p>
+	</div>
+
+<!-- soSlider -->
+	<div id="soSlider" class="intro-box">
+		<h2 class="h2-title">soSlider 参数 <strong class="orange">（滑动条插件）</strong></h2>
+		<p class="blue">
+	$(obj).soSlider({ <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;type : 1, <span class="green"> //类型:1||2，1个滑动点，2个滑动点，默认为1个滑动点</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;bit :1, <span class="green"> //进位步长，默认为1</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;data:null, <span class="green"> //'min,max' 字符串格式，用逗号隔开数值，最小数和最大数</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;defaultPos:null, <span class="green"> //'point1,point2' 字符串格式，默认数值，1个滑动点1个数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;showRange : true, <span class="green"> //显示滑动区间</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;initEvent : function (){}, <span class="green"> //加载执行事件， initEvent : function(v1,v2){}提供2点对应数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;mMoveEvent : function () {}, <span class="green"> //移动执行事件， mMoveEvent : function(v1,v2){}提供2点对应数值</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;mUpEvent : function (){} <span class="green"> //鼠标按起执行事件， mUpEvent : function(v1,v2){}提供2点对应数值</span><br />
+	});<br />
+		</p>
+	</div>
+
+<!-- sobox -->
+	<div id="sobox" class="intro-box">
+		<h2 class="h2-title">sobox 参数 <strong class="orange">（弹窗控件）</strong></h2>
+		<h3>通用方法</h3>
+		<p class="blue">
+			$.sobox.pop({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">/* 弹出类型及类型参数 */</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;type : 'content', <span class="green">// 弹窗内容模式:'content','target','ajax','iframe'，每个模式分别对应每个参量</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;target : null, <span class="green">// target方式，target目标，如 '.detail','#contbox'</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;content : null, <span class="green">// content方式，支持html</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;iframe : null, <span class="green">// iframe方式，值为iframe目标页链接，如：http:// www.baidu.com/</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;ajax:{url:null,data:null,callback:function(){}}, <span class="green">// ajax事件</span><br /><br />
+
+			&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">/* 位置信息 */</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;posType:'center', <span class="green">// 'center,win,doc,tc,bc' 位置类型，居中 / 距window顶部 / 距离doucment顶部定 / top水平居中 / bottom水平居中，默认居中</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;pos:[0,0], <span class="green">// [x,y] 距离document左上角坐标,set模式使用</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;offset:[0,0], <span class="green">// [x,y] 弹窗相对本来设定位置偏移量,center模式只改变y轴</span><br /><br />
+
+			&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">/* 自定义参数 */</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;cls : null, <span class="green">// 添加自定义类名</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;width:360,height:null, <span class="green">// 宽高属性,iframe模式下，height为iframe高度</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;defaultShow:true, <span class="green">// 直接显示pop</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;visibility:true, <span class="green">// 默认pop执行后显示（用于部分复杂处理场景）</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;title : '提示', <span class="green">// 默认标题</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;showTitle:true, <span class="green">// 标题栏隐藏：默认显示</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;showMask : true, <span class="green">// 显示遮罩</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;onlyOne : false, <span class="green">// 为true时，同一状态下只显示一个pop</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;drag :true, <span class="green">// 是否可拖动</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;maskClick : true, <span class="green">// 点击背景关闭内容</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;btn : [], <span class="green">// {cls:,text'确定',link:,removePop: true,callback:}</span><br /><br />
+
+			&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">/* 返回事件 */</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;beforePop:function(){}, <span class="green">// 窗口打开之前返回事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;onPop: function(){}, <span class="green">// 窗口打开返回事件</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;closePop: function(){} <span class="green">// 窗口关闭返回事件</span><br />
+			});<br /><br />
+</p>
+
+			<h3 class="red">btn参数说明：</h3>
+			<p>默认每个btn元素由一个<span class="red">.a-sopop-btn</span> 的a元素内置一个<span class="red">.s-sopop-btn</span> span元素组成，</p>
+			<p class="blue">
+			{<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cls:null,  <span class="green">// 添加类名</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text:'确定',  <span class="green">// 默认按钮文字</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link:'#',  <span class="green">// 为a添加链接，添加链接后，按钮返回链接指向地址</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removePop: true,  <span class="green">// 默认点击按钮关闭弹出层</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback:function (removePop){}  <span class="green">// 返回事件</span><br />
+			}</p>
+<br />
+<p class="red">详情见sobox的api文档说明和示例</p><br />
+<br />
+		<h3>快捷 alert 弹窗</h3>
+		<p class="blue">$.sobox.alert(title,content,callback); <br /> <span class="green">// alert 弹窗标题，内容，点击确定返回事件</span></p>
+<br />
+		<h3>快捷 confirm 弹窗</h3>
+		<p class="blue">$.sobox.alert(title,content,successBack,cancelBack); <br /> <span class="green">// confirm 弹窗标题，内容，确定返回事件，中断返回事件（点取消按钮返回此事件，点背景或标题上的关闭按钮不返回此事件）</span></p>
+<br />
+		<h3>示例：</h3>
+
+		<p class="blue">
+			&nbsp;&nbsp;&nbsp;&nbsp;$.sobox.alert(<span class="red">'请选择','请先选择配送区域，再进行操作'</span>);
+		</p>
+<br />
+		<p class="blue">
+			&nbsp;&nbsp;&nbsp;&nbsp;$.sobox.confirm(<span class="red">'提示','你确定此操作吗？',function(){<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert('操作成功！');<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;},function(){<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('操作已取消！');<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;}</span>);
+		</p>
+	</div>
+
+</div>
+
+
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/soScrollTo.js"></script>
+
+<script type="text/javascript">
+$(function () {
+	$('.ul-scrollNav a').soScrollTo();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta name="author" content="中国万网,net.cn,hichina,chinaok" /> 
+<meta name="Copyright" content="" />
+<meta name="description" content="" /> 
+<meta name="keywords" content="" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<title>基于jQuery的对象切换插件：soChange 1.5 made by bujichong</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+
+<style type="text/css">
+html{background:#fff;}
+body{font-size:0.75em;font-family:verdana;}
+ul{list-style:none;}
+*{padding:0;margin:0;}
+a{color:#333;text-decoration:none;}
+.wrapper{width:980px;margin:10px auto;}
+.sliderBox{position:relative;width:600px;height:250px;overflow:hidden;}
+.moveWrap{position:relative;height:250px;width:100%;}
+.moveWrap .slider{position:absolute;top:0px;width:100%;font-size:6em;text-align:center;line-height:250px;color:#fff;}
+.orange{background:orange;left:0;}
+.green{background:green;left:100%;}
+.blue{background:blue;left:200%;}
+.grey{background:grey;left:300%;}
+
+.ul-thumb{padding:10px 0;overflow:hidden;zoom:1;}
+.ul-thumb li{float:left;width:20px;text-align:center;height:20px;margin:0 3px;background:#ccc;}
+.ul-thumb li.now{background:yellow;}
+.s-prev,.s-next{display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;margin:0 20px;background:red;padding:5px 10px;cursor:hand;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+	<div id="slider_1" class="sliderBox">
+		<div class="moveWrap">
+			<div class="slider orange"><a href="#1">1</a></div>
+			<div class="slider green"><a href="#2">2</a></div>
+			<div class="slider blue"><a href="#3">3</a></div>
+			<div class="slider grey"><a href="#4">4</a></div>
+		</div>
+	</div>
+	<ul class="ul-thumb">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<span class="s-prev">s-prev</span><span class="s-next">s-next</span>
+	<br />
+
+
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script src="js/tend.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$('#slider_1').soTend({
+		moveWrap : '.moveWrap',
+		easing :'swing',//swing,linear
+		obj : 'div',
+		thumb : '.ul-thumb li',
+		thumbNowClass : 'now',
+		tendWidth : 600,
+		btnPrev : '.s-prev',
+		btnNext : '.s-next',
+		defInx : 0,
+		changeTime:5000,//自动切换时间
+		moveTime:800,
+		callback : function () {}
+	});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta content="all" name="robots" />
+<meta name="author" content="" /> 
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" /> 
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>jquery邮箱后缀名联想插件 soEndMail 1.0</title>
+<link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+</head>
+<body>
+<div class="wrapper">
+	<h1>jquery邮箱后缀名联想插件 soEndMail 1.0</h1>
+
+<!-- soShare -->
+	<div class="allIntro">
+		<h2 class="h2-title">soShare 参数 <strong class="orange">（分享插件）</strong></h2>
+		<p class="blue">
+		$('obj').soEndMail({ <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;mail :["163.com","qq.com","126.com","sina.com","sohu.com","yahoo.com.cn","hotmail.com","21cn.com","tom.com","yeah.net","gmail.com",<br />"yahoo.cn","263.net","msn.com","foxmail.com","haier.com","yahoo.com","sogou.com","eyou.com","139.com","sina.com.cn"], <span class="green">// 默认有最常用的邮箱后缀，更新数组替换</span><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;listWrap :null<span class="green">// 存放mail的ul盒子</span><br />
+	});<br />
+		</p>
+	</div>
+	<div class="eachBox" style="height:400px;">
+
+		<div class="mail-box">
+			<p class="p-mail"><input type="text" class="txt" name="txt" autocomplete="off"/></p>
+			<ul class="ul-mailList"></ul>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/soEndMail.js"></script>
+<script type="text/javascript">
+	$('.txt').soEndMail({listWrap:'.ul-mailList'});
+</script>
+
+</body>
+</html>

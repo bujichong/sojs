@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta name="author" content="中国万网,net.cn,hichina,chinaok" /> 
+<meta name="Copyright" content="" />
+<meta name="description" content="" /> 
+<meta name="keywords" content="" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<title>基于jQuery的对象切换插件：soChange 1.5 made by bujichong</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script src="js/jquery.soSwitch.js" type="text/javascript"></script>
+<style type="text/css">
+html{background:#fff;}
+body{font-size:0.75em;font-family:verdana;}
+ul{list-style:none;}
+*{padding:0;margin:0;}
+.wrapper{width:980px;margin:10px auto;}
+.sliderBox{position:relative;width:600px;height:250px;overflow:hidden;}
+.sliderBox div{width:600px;height:250px;font-size:6em;text-align:center;line-height:250px;color:#fff;}
+
+.orange{background:orange;}
+.green{background:green;}
+.blue{background:blue;}
+.grey{background:grey;}
+
+.ul_thumb{position:absolute;right:10px;bottom:10px;overflow:hidden;zoom:1;clear:both;}
+.ul_thumb li{float:left;width:16px;height:16px;line-height:16px;text-align:center;background:#eee;margin-right:5px;display:inline;cursor:hand;cursor:pointer;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;font-size:0.9em;}
+.ul_thumb li.now{background:#c00;color:#fff;}
+
+.btnNext,.btnPrev{position:absolute;top:100px;width:50px;height:30px;text-align:center;line-height:30px;background:#fff;cursor:hand;cursor:pointer;}
+
+
+
+.ul_b1{position:relative;height:25px;width:400px;}
+.ul_b1 li{width:400px;height:25px;background:#fff;}
+.btnPrev{left:0px;}
+.btnNext{right:0px;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+	<div id="slider_1" class="sliderBox">
+		<div class="orange">1</div>
+		<div class="green">2</div>
+		<div class="blue">3</div>
+		<div class="grey">4</div>
+	</div>
+
+	<br />
+
+	<ul class="ul_b1 soSwitch" switchObj="li" switchType="slideUpDown" changeTime="4000">
+	  <li><a class="a_title" href="#">环保部叫停未经环评擅自建金沙江水电站等</a><span class="span_info">2009-01-15</span></li>
+	  <li><a class="a_title" href="#">湖北富翁澳门赌博后被抓 称警方收400万放人</a><span class="span_info">2009-01-14</span></li>
+	  <li><a class="a_title" href="#">分析称马英九可能以国民党主席身份访大陆</a><span class="span_info">2009-01-13</span></li>
+	  <li><a class="a_title" href="#">京沪港生活成本居全球前30 亚洲10强中国占半</a><span class="span_info">2009-01-12</span></li>
+	  <li><a class="a_title" href="#">日本月亮女神号探月卫星成功撞月(图)</a><span class="span_info">2009-01-11</span></li>
+	</ul>
+
+	<br />
+
+	<div id="slider_3" class="sliderBox soSwitch" data-switch='{"switchType":"slide","inThumb":true}'>
+		<div class="orange">1</div>
+		<div class="green">2</div>
+		<div class="blue">3</div>
+		<div class="grey">4</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('#slider_1').soSwitch({
+		switchType : 'random',
+		inThumb : true,
+		inBtn : true,
+		changeTime :3000,
+		beforeEvent : function (now,next) {
+			//console.log(now+','+next);
+		},
+		afterEvent :function (i) {
+		}
+	});
+
+</script>
+
+</body>
+</html>

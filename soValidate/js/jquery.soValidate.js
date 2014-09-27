@@ -398,19 +398,23 @@ $.soValidate.addRex({
 			}
 		},
 		remote : {//远程验证
-			rule : function (val,param) {// param : {url : xx, name: xxx}
-				var data={};
-				data[param.name] = val;
+			rule : function (val,param) {// param : {url : xx, key: xxx,data :{}}
+				var d={};
+				d[param.key] = val;
+				var data = $.extend(d,param.data||{});
+				var b = false;
 				$.ajax({
 					url : param.url,
 					data : data,
+					async : false,
 					success : function (data) {
-						return data;
+						b = data.success;
 					},
 					error : function (XMLHttpRequest, textStatus, errorThrown) {
 						alert('向服务器请求验证失败！');
 					}
 				});
+				return b;
 			},
 			msg:function (val,param) {
 				return '您的填写不正确！';

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta name="author" content="" />
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>测试</title>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<p id="pTest">
+
+</p>
+<br /><br /><br />
+<iframe id="iframeForm" name="iframeForm" src=""></iframe>
+
+<form action="testIframe.html" target="iframeForm"><input type="submit" class="btn btn-submit" name="btnSubmit" value="确 定" />
+</form>
+
+
+</div>
+<script type="text/javascript">
+    $('#iframeForm').load(function () {
+        var im = document.getElementById('iframeForm');
+        var text = $(im.contentWindow.document.body).text();
+        var data = $.parseJSON(text);
+        window.console && console.log(data);
+    });
+</script>
+
+
+</body>
+</html>

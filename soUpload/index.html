@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta name="author" content="" />
+<meta name="Copyright" content="" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<title>测试</title>
+</head>
+<body>
+<div class="wrapper">
+
+ <form id="importForm" name="importForm" method="post" enctype="multipart/form-data">
+      <p class="p-item p-errTip"></p>
+      <p class="p-item">
+          <label class="lab-item col_2"><em class="em-rq">*</em>上传文件：</label>
+          <input type='text' readonly="readonly" name='textfield' e id='textfield' class='txt' style="width:200px;"/>
+          <input type='button'  id="uploadButton" class="s-upload-button" value='选择excel文件' />
+      </p>
+      <br />
+      <p class="p-item p-formbtn"><input type="button" id="uploadSubmit" value="导入" class="btn btn-formSubmit">
+</form>
+
+
+</div>
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="soUpload.js"></script>
+<script type="text/javascript">
+$.soUpload({
+    //action : 'testIframe.html',
+    action : 'testIframeFail.html',
+    fileName : 'file',
+    upBtn :'#uploadButton',
+    nameText : '#textfield',
+    submitBrn : '#uploadSubmit',
+    emptyMsg : '请上传excel文件',
+    complete : function (data) {
+      if (data) {
+        if (data.success) {
+            $('.p-errTip').text('');
+            alert('文件已导入成功！');
+        }else{
+          //window.console && console.log(data);
+          $('.p-errTip').text(data.message);
+        };
+      };
+    }
+});
+</script>
+
+
+</body>
+</html>

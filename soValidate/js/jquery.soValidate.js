@@ -1,5 +1,5 @@
-/* soValidate1.0  
-* 作者： bujichong 
+/* soValidate1.0
+* 作者： bujichong
 * 邮箱 ：bujichong@163.com
 * 附 serializeObject
 
@@ -36,7 +36,7 @@ $(form).soValidate({
 			url : 'xxx',
 			data : formData,
 			success : function (){
-			
+
 			}
 		});
 	},
@@ -67,11 +67,11 @@ $(fBtn).click(function(){	$formV.validate({});	 }); //启动验证，并可以�
 使用以下方法扩展一个新的验证规则或覆盖已有规则
 $.soValidate.addRex({
 	rulename : {
-		rule : function (val,param){//param为传入的参数 
-			
+		rule : function (val,param){//param为传入的参数
+
 		},
 		msg : function (val,param){
-		
+
 		}
 	}
 });
@@ -127,8 +127,9 @@ $.soValidate.addRex({
 				o = $.extend(o,opt||{});
 				$inputs&&$inputs.unbind('blur.validate');//重置验证
 				$submitBtn&&$submitBtn.unbind('click.validate');//重置验证
+				_self.unbind('submit.validate');//重置验证
 				$inputs = _self.find(':input').add(o.inInputs).not(o.exInputs).not(':submit');//初次或再次获得$inputs对象
-				$submitBtn = o.submitBtn?$(o.submitBtn):_self.find('input:submit');
+				$submitBtn = o.submitBtn?_self.find(o.submitBtn):_self.find('input:submit');
 				if (o.validate) {
 					$submitBtn.bind('click.validate',function (e) {//开启提交验证
 						e.preventDefault();
@@ -137,6 +138,10 @@ $.soValidate.addRex({
 					$inputs.bind('blur.validate',function () {
 						vv._blurValidate(this);
 					});//重新绑定
+					_self.bind('submit.validate',function () {
+						vv._submitValidate();
+						return false;
+					});
 				}
 			},
 			_blurValidate : function (obj) {//blur事件函数
@@ -395,6 +400,14 @@ $.soValidate.addRex({
 			},
 			msg:function (val,param) {
 				return '请填写一个大于'+param+'的数字';
+			}
+		},
+		plateNum :{//车牌号码，不包括中文，只验证后6位
+			rule : function (val) {
+				return /^[A-Za-z0-9]{6}$/.test(val);
+			},
+			msg:function () {
+				return '请填写正确的车牌号码！';
 			}
 		},
 		remote : {//远程验证

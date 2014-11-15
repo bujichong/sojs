@@ -8,6 +8,8 @@ $.soUpload = function(opt) {
         nameText: null,
         emptyMsg: '',
         dataType: 'JSON',
+        accept : ['.jpg','.png'],
+		errAcceptMsg : '上传文件格式不正确！',
         submit: function() { //提交之前
         },
         complete: function() { //上传完成
@@ -69,22 +71,41 @@ $.soUpload = function(opt) {
     });
 
     $(opt.submitBrn).click(function() {
-        if ($nameText.val() == '') {
-            var $par = $nameText.parent();
-            var $err = $par.find('.em-errMes');
+        var val = $nameText.val();
+		var $par = $nameText.parent();
+        if (val == '') {
+			var $err = $par.find('.em-errMes');
             if ($err.length) {
-                $err.append(opt.emptyMsg);
+                $err.html(opt.emptyMsg);
             } else {
                 $par.append('<em class="em-errMes">' + opt.emptyMsg + '</em>');
             };
         } else {
-            var $par = $nameText.parent();
-            var $err = $par.find('.em-errMes');
-            if ($err.length) {
-                $err.remove();
-            };
-            opt.submit(upForm);
-            upForm.submit();
+            var can = false;
+            if(opt.accept.length){
+                $.each(opt.accept,function (i,v) {
+                    if (val.indexOf(v)>-1) {can = true;return false;};
+                });
+            }else {
+				can = true;
+            }
+			if (can) {
+				var $par = $nameText.parent();
+				var $err = $par.find('.em-errMes');
+				if ($err.length) {
+					$err.remove();
+				};
+				opt.submit(upForm);
+				upForm.submit();
+			}else {
+				var $err = $par.find('.em-errMes');
+				if ($err.length) {
+					$err.html(opt.errAcceptMsg);
+				} else {
+					$par.append('<em class="em-errMes">'+opt.errAcceptMsg+'</em>');
+				};
+			}
+
         };
     });
 

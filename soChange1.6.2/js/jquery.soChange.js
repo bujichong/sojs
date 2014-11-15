@@ -22,7 +22,8 @@
 				overStop:true,//鼠标经过切换对象时，是否停止切换，并于鼠标离开后重启自动切换，前提是已开启自动切换
 				changeTime:5000,//自动切换时间
 				delayTime:300,//鼠标经过时对象切换迟滞时间，推荐值为300ms
-				callback: function() {}
+				callback: function() {},
+				alwaysback : function() {}
 			}, o || {});
 
 			var _self = $(this);
@@ -55,6 +56,7 @@
 					if (o.callback) {o.callback(nowIndex, index)}
 					nowIndex = index;
 				}
+				if (o.alwaysback) {o.alwaysback(nowIndex, index)}
 			}
 
 			//切换到下一个

@@ -31,14 +31,18 @@
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="soUpload.js"></script>
 <script type="text/javascript">
-$.soUpload({
-    //action : 'testIframe.html',
-    action : 'testIframeFail.html',
+var tUpload = $.soUpload({
+    action : 'testIframe.html',
+    //action : 'testIframeFail.html',
     fileName : 'file',
     upBtn :'#uploadButton',
     nameText : '#textfield',
+    accept : ['.doc','.xlsx'],//只接受excel格式
     submitBrn : '#uploadSubmit',
     emptyMsg : '请上传excel文件',
+    submit : function () {
+      tUpload.updateParams({id:121,name:'test'});
+    },
     complete : function (data) {
       if (data) {
         if (data.success) {

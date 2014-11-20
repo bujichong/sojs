@@ -322,7 +322,16 @@ $.soValidate.addRex({
 				return '请填写必填字段！';
 			}
 		},
+
 		baseChar : {
+			rule : function (val) {
+				return /^\w+$/.test(val);
+			},
+			msg:function () {
+				return '只能用英文字母、数字和下划线';
+			}
+		},
+		baseCnChar : {
 			rule : function (val) {
 				return /^[\u0391-\uFFE5\w]+$/.test(val);
 			},

@@ -7,16 +7,18 @@ $.soUpload = function(opt) {
         submitBrn: null,
         nameText: null,
         emptyMsg: '',
+        msgPos : null,
         dataType: 'JSON',
-        accept : ['.jpg','.png'],
-		errAcceptMsg : '上传文件格式不正确！',
+        accept:[ ".jpg", ".png" ],
+        errAcceptMsg:"上传文件格式不正确！",
         submit: function() { //提交之前
         },
         complete: function() { //上传完成
         }
     }, opt || {});
 
-    var iframeName = 'iframeF_' + Math.floor(Math.random() * 10000);
+    var rand = Math.floor(Math.random() * 10000);
+    var iframeName = 'iframeF_' + rand;
     // var $iframe = $('<iframe id="' + iframeName + '" name="' + iframeName + '" src="'+opt.action+'" style="display:none;"></iframe>');
      var $iframe = $('<iframe id="' + iframeName + '" name="' + iframeName + '" style="display:none;"></iframe>');
 
@@ -35,6 +37,7 @@ $.soUpload = function(opt) {
     });
 
     var $upInput = $("<input type='file'/>");
+    var $paramsBox = $("<div class='paramsBox_"+rand+"'></div>");
     $upInput.css({
         position: "absolute",
         top: '-3000px',
@@ -58,8 +61,9 @@ $.soUpload = function(opt) {
             name: param,
             value: opt.params[param]
         });
-        upForm.append($hidden);
+        $paramsBox.append($hidden);
     }
+    upForm.append($paramsBox);
 
     $(opt.upBtn).click(function() {
         $upInput.click();
@@ -70,42 +74,63 @@ $.soUpload = function(opt) {
         $nameText.val(this.value);
     });
 
-    $(opt.submitBrn).click(function() {
-        var val = $nameText.val();
-		var $par = $nameText.parent();
-        if (val == '') {
-			var $err = $par.find('.em-errMes');
-            if ($err.length) {
-                $err.html(opt.emptyMsg);
-            } else {
-                $par.append('<em class="em-errMes">' + opt.emptyMsg + '</em>');
-            };
-        } else {
-            var can = false;
-            if(opt.accept.length){
-                $.each(opt.accept,function (i,v) {
-                    if (val.indexOf(v)>-1) {can = true;return false;};
-                });
-            }else {
-				can = true;
-            }
-			if (can) {
-				var $par = $nameText.parent();
-				var $err = $par.find('.em-errMes');
-				if ($err.length) {
-					$err.remove();
-				};
-				opt.submit(upForm);
-				upForm.submit();
-			}else {
-				var $err = $par.find('.em-errMes');
-				if ($err.length) {
-					$err.html(opt.errAcceptMsg);
-				} else {
-					$par.append('<em class="em-errMes">'+opt.errAcceptMsg+'</em>');
-				};
-			}
+    function updateParams(updateParams) {
+        $paramsBox.empty();
+        for (var param in updateParams) {
+            var $hidden = $("<input type='hidden'/>").attr({
+                name: param,
+                value: updateParams[param]
+            });
+            $paramsBox.append($hidden);
+        }
+    }
 
+    function errMsgF(err,$text,msg) {
+        if (err) {//如果err为真需要显示msg
+            if (opt.msgPos) {//如果指定了msgPos
+                $(opt.msgPos).html(msg);
+            }else{
+                var $par = $text.parent();
+                var $err = $par.find('.em-errMes');
+                if ($err.length) {
+                    $err.html(msg);
+                } else {
+                    $par.append('<em class="em-errMes">' + msg + '</em>');
+                };
+            };
+        }else{//如果没有错误，移除msg
+            if (opt.msgPos) {//如果指定了msgPos
+                $(opt.msgPos).empty();
+            }else{
+                var $par = $text.parent();
+                var $err = $par.find('.em-errMes');
+                if ($err.length) {
+                    $err.remove();
+                };
+            }
+        };
+    }
+
+    $(opt.submitBrn).click(function() {
+        //window.console && console.log('click',$nameText.val());
+        var val = $nameText.val();
+        if ($.trim(val) == '') {
+            errMsgF(true,$nameText,opt.emptyMsg);//为空提示
+        } else {
+            if (opt.accept.length) {
+                var f = false;
+                $.each(opt.accept,function (i,v) {
+                    if (val.indexOf(v)>0) {f = true;return false;};
+                });
+                if (!f) {
+                    errMsgF(true,$nameText,opt.errAcceptMsg);//格式不正确提示
+                    return false;
+                };
+            };
+
+            errMsgF(false,$nameText);//全都ok移除msg
+            opt.submit(upForm);
+            upForm.submit();
         };
     });
 
@@ -123,7 +148,10 @@ $.soUpload = function(opt) {
                 text = "error";
             }
         }
+        $upInput.val('');
+        $nameText.val('');
         opt.complete.call(null, text);
     });
+    return {upForm:upForm,iframe:$iframe,upinput:$upInput,updateParams:updateParams}
 
 };

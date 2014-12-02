@@ -1,7 +1,7 @@
 /* sobox 2.0 */
 /*
 *通用方法
-*$.sobox.pop({ 
+*$.sobox.pop({
 	* 弹出类型及类型参数 *
 	type : 'content',//弹窗内容模式:'content','target','ajax','iframe'，每个模式分别对应每个参量@
 	target : null,//target方式，target目标，如 '.detail','#contbox'@
@@ -13,7 +13,7 @@
 	posType:'center',//'center,win,doc,tc,bc' 位置类型，居中模式 / 距离window顶部坐标设定 / 距离doucment顶部坐标设定 / top水平居中 / bottom水平居中，默认居中显示，可自定义坐标@
 	pos:[0,0],//[x,y] 距离document左上角坐标,set模式使用@
 	offset:[0,0],//[x,y] 弹窗相对本来设定位置偏移量,center模式只改变y轴@
-	
+
 	* 自定义参数 *
 	cls : null,//添加自定义类名@
 	width:360,height:null,//宽高属性,iframe模式下，height为iframe高度@
@@ -35,7 +35,7 @@
 *});
 
 *btn参数说明：
-*默认每个btn元素由一个.a-sopop-btn 的a元素内置一个.s-sopop-btn span元素组成， 
+*默认每个btn元素由一个.a-sopop-btn 的a元素内置一个.s-sopop-btn span元素组成，
 *cls 为按钮a自定义类名，
 *link 为a添加链接，
 *returnFlase 默认不返回链接事件，
@@ -44,12 +44,12 @@
 *
 *
 *快捷 alert 弹窗
-*$.sobox.alert(title,content,callback); 
+*$.sobox.alert(title,content,callback);
  alert 弹窗标题，内容，点击确定返回事件
 *
 *
 *快捷 confirm 弹窗
-*$.sobox.alert(title,content,successBack,cancelBack); 
+*$.sobox.alert(title,content,successBack,cancelBack);
 *confirm 弹窗标题，内容，确定返回事件，中断返回事件（点取消按钮返回此事件，点背景或标题上的关闭按钮不返回此事件）
 *
 *
@@ -118,7 +118,7 @@
 				$(document).bind('mousemove.drag',function (e) {
 					mousemove(e);
 				});
-			}); 
+			});
 			//document.body.onselectstart=function(e){return false;};
 			$(document).mouseup(function (e) {
 				if (e.target== $title.get(0)) {
@@ -194,7 +194,7 @@
 				posType:'center',//'center,win,doc,tc,bc' 位置类型，居中模式 / 距离window顶部坐标设定 / 距离doucment顶部坐标设定 / top水平居中 / bottom水平居中，默认居中显示，可自定义坐标@
 				pos:[0,0],//[x,y] 距离document左上角坐标,set模式使用@
 				offset:[0,0],//[x,y] 弹窗相对本来设定位置偏移量,center模式只改变y轴@
-				
+
 				/* 自定义参数 */
 				cls : null,//添加自定义类名@
 				width:400,height:null,//宽高属性,iframe模式下，height为iframe高度@
@@ -371,7 +371,7 @@
 
 
 	$.fn.extend({
-		/* 
+		/*
 		通过链接方式设定直接打开iframe
 		html:
 		<a class="a-iframePop" href="1.html?hs#soIframe?width=300&height=160&title=百度&showTitle=0">链接</a>

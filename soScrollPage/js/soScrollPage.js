@@ -8,6 +8,8 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 		this.$box = $(opt.box);
 		this.$scrollbox = $(opt.scrollbox);
 		this.$page = $(opt.page);
+		this.btnNext = opt.btnNext&&$(opt.btnNext);
+		this.btnPrev = opt.btnPrev&&$(opt.btnPrev);
 		this.$thumb = null;
 
 		this.pageClsH = opt.pageClsH;
@@ -30,6 +32,7 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 			t.resize();//绑定window resize事件
 			t.mosuewheel();//绑定滚轮事件
 			t.clickThumb();//绑定thumb点击事件
+			t.prevNextThumb();
 			t.animatePage(t.now);//初始执行第一页进入动画
 		},
 		setH : function () {
@@ -68,6 +71,15 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 			var t = this;
 			t.$thumb.removeClass('now').eq(i).addClass('now');
 		},
+		prevNextThumb : function () {
+			var t = this;
+			t.btnPrev&&t.btnPrev.click(function () {
+				if (t.lock==0) {t.prevPage();}
+			});
+			t.btnNext&&t.btnNext.click(function () {
+				if (t.lock==0) {t.nextPage();}
+			});
+		},
 		clickThumb : function () {
 			var t = this;
 			t.$thumb.click(function () {
@@ -97,11 +109,15 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 			var t = this;
 			t.lock = 1;//锁定页面
 			t.now = ix;
+			t.btnPrev&&t.btnPrev.fadeOut();
+			t.btnNext&&t.btnNext.fadeOut();
 			t.cellsAnimate(t.prev,'out',function () {//先执行prev退出事件
 				t.setThumb(t.now);
 				t.$scrollbox.animate({top:-t.wh*t.now+'px'},800,'easeInOutExpo',function () {//页面切换事件
 					t.cellsAnimate(t.now,'in',function () {//再执行now进入事件
 						t.lock = 0;//解除锁定
+						t.btnNext&&(t.now!=t.$page.length-1)&&t.btnNext.fadeIn();
+						t.btnPrev&&(t.now!=0)&&t.btnPrev.fadeIn();
 					});
 				});
 			});
@@ -120,7 +136,7 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 				var allDuring = t.minDuring;//当前总动画执行完时间
 
 				$.each(anIx,function (i,v) {
-					var $o = $pageIx.find(v.o);
+					var $o = v.global?$(v.o):$pageIx.find(v.o);
 					v.fn&&$.each(v.fn,function (k,opt) {
 						$o[k](opt);
 					});
@@ -150,7 +166,9 @@ jQuery.extend(jQuery.easing,{easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==
 				scrollbox : '#pageScrollbox',//滚动包裹对象
 				page : '.page',//页
 				pageClsH : 'soScrollPage-',//为每页单独定义的cls头，会生成 soScrollPage-0 , soScrollPage-1 这样的class，方便每页dom查找，如无冲突，一般不用修改
-				thumbCls : 's-pageThumb',//thumb class
+				thumbCls : 's-pageThumb',//thumb class,
+				btnPrev : null,
+				btnNext : null,
 				minDuring : 300,//每页离开时最少停留时间
 				animateOpt : null//动画参数对象
 			},o||{});

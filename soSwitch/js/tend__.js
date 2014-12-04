@@ -2,7 +2,7 @@
  *	soTend - simple object change with jQuery
  *	made by bujichong 2011-10-10
  *	作者：不羁虫  2013
- * http://hi.baidu.com/bujichong/
+ * http://www.bujichong.com/
  *E-mail:bujichong@163.com
  */
 ;(function($){

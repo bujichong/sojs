@@ -2,7 +2,7 @@
  *	soMmEvent 1.0 
  *	made by bujichong
  *	作者：不羁虫
- *百度空间： http://hi.baidu.com/bujichong/
+ *百度空间： http://www.bujichong.com/
  *邮件地址：bujichong@163.com
  */
 (function ($) {

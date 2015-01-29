@@ -127,7 +127,7 @@ $.soValidate.addRex({
 				o = $.extend(o,opt||{});
 				$inputs&&$inputs.unbind('blur.validate');//重置验证
 				$submitBtn&&$submitBtn.unbind('click.validate');//重置验证
-				_self.unbind('submit.validate');//重置验证
+				//_self.unbind('submit.validate');//重置验证
 				$inputs = _self.find(':input').add(o.inInputs).not(o.exInputs).not(':submit');//初次或再次获得$inputs对象
 				$submitBtn = o.submitBtn?_self.find(o.submitBtn):_self.find('input:submit');
 				if (o.validate) {
@@ -138,10 +138,10 @@ $.soValidate.addRex({
 					$inputs.bind('blur.validate',function () {
 						vv._blurValidate(this);
 					});//重新绑定
-					_self.bind('submit.validate',function () {
-						vv._submitValidate();
-						return false;
-					});
+					// _self.bind('submit.validate',function () {
+					// 	vv._submitValidate();
+					// 	return false;
+					// });
 				}
 			},
 			_blurValidate : function (obj) {//blur事件函数

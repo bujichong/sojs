@@ -21,6 +21,7 @@
 				clickFalse:true,//导航对象点击是否链接无效，默认是return false链接无效，当thumbOverEvent为false时，此项必须为true，否则鼠标点击事件冲突
 				overStop:true,//鼠标经过切换对象时，是否停止切换，并于鼠标离开后重启自动切换，前提是已开启自动切换
 				changeTime:5000,//自动切换时间
+				startIndex :0,//起始指针，默认为第一帧
 				delayTime:300,//鼠标经过时对象切换迟滞时间，推荐值为300ms
 				callback: function() {},
 				alwaysback : function() {}
@@ -29,7 +30,7 @@
 			var _self = $(this);
 			var thumbObj;
 			var size = _self.size();
-			var nowIndex =0; //定义全局指针
+			var nowIndex =o.startIndex; //定义全局指针
 			var index;//定义全局指针
 			var startRun;//预定义自动运行参数
 			var delayRun;//预定义延迟运行参数
@@ -66,14 +67,14 @@
 			}
 
 			//初始化
-			_self.hide().eq(0).show();
+			_self.hide().eq(nowIndex).show();
 
 			//点击任一图片
 			if (o.thumbObj) {
 				thumbObj = $(o.thumbObj);
 
 				//初始化thumbObj
-				thumbObj.removeClass(o.thumbNowClass).eq(0).addClass(o.thumbNowClass);
+				thumbObj.removeClass(o.thumbNowClass).eq(nowIndex).addClass(o.thumbNowClass);
 				thumbObj.click(function () {
 					index = thumbObj.index($(this));
 					fadeAB();

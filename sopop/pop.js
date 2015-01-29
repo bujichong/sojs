@@ -86,35 +86,35 @@ $.pop = function(o) {
                     });
                 }, 100);
             };
-        }
+            if (opt.pos == 'bottom') {
+                $wrap.css({
+                    'left': '0px',
+                    'bottom': '-100%'
+                });
+                setTimeout(function() {
+                    $wrap.css({
+                        'bottom': '0px'
+                    });
+                }, 100);
+            };
+            if (opt.pos == 'top') {
+                $wrap.css({
+                    'left': '0px',
+                    'top': '-100%'
+                });
+                setTimeout(function() {
+                    $wrap.css({
+                        'top': '0px'
+                    });
+                }, 100);
+            };
+        };
 
         popE();
         $(window).resize(function() {
             popE();
         });
 
-        if (opt.pos == 'bottom') {
-            $wrap.css({
-                'left': '0px',
-                'bottom': '-100%'
-            });
-            setTimeout(function() {
-                $wrap.css({
-                    'bottom': '0px'
-                });
-            }, 100);
-        };
-        if (opt.pos == 'top') {
-            $wrap.css({
-                'left': '0px',
-                'top': '-100%'
-            });
-            setTimeout(function() {
-                $wrap.css({
-                    'top': '0px'
-                });
-            }, 100);
-        };
     };
 
     function removePop() {

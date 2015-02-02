@@ -57,19 +57,17 @@ $.pop = function(o) {
         opt.beforePop($wrap);
 
         function popE() {
-            var wH = $(window).height(),
-                wW = $(window).width();
+            var wW = $(window).width();
             if (opt.showMask) {
                 $mask.css({
-                    width: wW,
-                    height: (wH + 2)
+                    'bottom': '0px'
                 });
             };
 
             var boxW = opt.width ? opt.width : wW * opt.widthPer;
             boxW = (opt.maxW && boxW > opt.maxW) ? opt.maxW : boxW;
             $wrap.css({
-                width: boxW,
+                // width: boxW,
                 height: opt.height
             });
             var boxH = $wrap.height();
@@ -77,6 +75,7 @@ $.pop = function(o) {
                 $wrap.css({
                     'left': '50%',
                     'top': '-150%',
+                    'width': boxW,
                     'marginLeft': -boxW / 2,
                     'marginTop': -boxH / 2
                 });
@@ -89,6 +88,7 @@ $.pop = function(o) {
             if (opt.pos == 'bottom') {
                 $wrap.css({
                     'left': '0px',
+                    'right':'0px',
                     'bottom': '-100%'
                 });
                 setTimeout(function() {
@@ -100,6 +100,7 @@ $.pop = function(o) {
             if (opt.pos == 'top') {
                 $wrap.css({
                     'left': '0px',
+                    'right':'0px',
                     'top': '-100%'
                 });
                 setTimeout(function() {

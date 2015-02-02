@@ -5,10 +5,10 @@
 <meta http-equiv="Content-Language" content="zh-CN" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <meta content="all" name="robots" />
-<meta name="author" content="bujichong,bujichong@163.com" /> 
+<meta name="author" content="bujichong,bujichong@163.com" />
 <meta name="Copyright" content="bujichong" />
 <meta name="keywords" content="soTree,jquery,jquery plugin" />
-<meta name="description" content="" /> 
+<meta name="description" content="" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>基于jQuery的树结构：soTree1.0，设置简单功能完善，made by bujichong</title>
 <link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
@@ -49,7 +49,7 @@
 			});<br />
 			</p>
 			<!-- <p class="p_other">未采用生僻的jquery特性，能兼容jquery1.2.6以上所有版本；<br />min版2.5k，兼容所有主流浏览器，如有发现问题或有更好的改进方案，请反馈给我，十分感谢 :)</p> -->
-			<p class="p_author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2012.1.4</p>
+			<p class="p_author"><a href="http://www.bujichong.com/" target="_blank">作者：不羁虫</a><br />2012.1.4</p>
 			<p class="blue">示例代码： <br />
 &nbsp;&nbsp;&nbsp;&nbsp;$('#loadTree').soTree({<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:'json/tree.json',<br />
@@ -70,7 +70,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;}
 		</div>
 
-	
+
 
 		<div class="eachBox">
 			<div class="demoBox">
@@ -149,7 +149,7 @@
 <b>html示例代码：</b>
 <pre class="blue">
 &lt;div id="tree_demo"&gt;
-&lt;ul&gt; 
+&lt;ul&gt;
 	&lt;li&gt;&lt;span&gt;节点1&lt;/span&gt;&lt;/li&gt;
 	&lt;li <span class="red">hide="true"</span>&gt;&lt;span&gt;节点2&lt;/span&gt;&lt;/li&gt;
 	&lt;li <span class="red">ischecked="true" isexpand="false"</span>&gt;&lt;span&gt;节点3&lt;/span&gt;
@@ -382,6 +382,27 @@ $('.btn_checked').click(function () {
 	});
 	alert(text);
 });
+
+</script>
+
+<script type="text/javascript">
+//ga
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56955204-1', 'auto');
+  ga('send', 'pageview');
+
+//baidu
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91f551b2f68716f7104f1c46a09b74af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
 
 </script>
 

@@ -2,7 +2,7 @@
 *	soSwitch 1.0 - simple gallery with jQuery
 *	made by bujichong
 *	作者：不羁虫
-* http://hi.baidu.com/bujichong/
+* http://www.bujichong.com/
 */
 
 ;(function($){

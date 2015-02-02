@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Language" content="zh-CN" />
 <meta content="all" name="robots" />
-<meta name="author" content="中国万网,net.cn,hichina,chinaok" /> 
+<meta name="author" content="中国万网,net.cn,hichina,chinaok" />
 <meta name="Copyright" content="" />
-<meta name="description" content="" /> 
+<meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -19,7 +19,7 @@
 <body>
 <div id="wrapper">
 
-<h1>基于jQuery的对象切换插件：<span class="strong">soChange 1.6.2</span>  <a  class="a_down" href="http://code.google.com/p/sochange-juqeryplugin/downloads/list">(点击下载)</a></h1>
+<h1>基于jQuery的对象切换插件：<span class="strong">soChange 1.6.2</span>  <a  class="a_down" href="https://github.com/bujichong/sojs/tree/master/soChange">(点击下载)</a></h1>
 <div class="allIntro">
 <h2>所有参数：</h2>
 <p class="blue">
@@ -45,7 +45,7 @@ $(obj).soChange({ <br />
 soChange 即 simple object change ，对象切换插件，<br />充分发挥css样式的灵活性，不仅仅适用于图片相册，也适用于选项卡或文字类型的切换， <br />以上为此插件所有参数，基本满足了现在常见开发中遇到的平滑过渡效果，具体应用请参考以下示例。 <br /> <br />
 
 <br /><b class="green">注：图片右上方的小箭头图标考虑美观用了透明的png32图片，在ie6下不透明。</b></p>
-<p class="p_author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2011.10.10</p>
+<p class="p_author"><a href="http://www.bujichong.com/" target="_blank">作者：不羁虫</a><br />2011.10.10</p>
 </div>
 <!-- 1 -->
 <div class="eachBox">
@@ -349,6 +349,7 @@ $(function () {
 		thumbObj:'#change_32 .ul_change_a2 span',
 		thumbNowClass:'on',//自定义导航对象当前class为on
 		changeType:'slide',//定义对象切换方式为slide
+		startIndex:2,
 		changeTime:4000//自定义切换时间为4000ms
 	});
 
@@ -403,7 +404,26 @@ $(function () {
 </script>
 
 
+<script type="text/javascript">
+//ga
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-56955204-1', 'auto');
+  ga('send', 'pageview');
+
+//baidu
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91f551b2f68716f7104f1c46a09b74af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
 
 
 </body>

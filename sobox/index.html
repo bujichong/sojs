@@ -68,7 +68,7 @@ $.sobox.pop({
 </pre>
 
 	<p>开放接口参数多多，敬请挖掘扩展~</p>
-	<p class="p-author"><a href="http://hi.baidu.com/bujichong/" target="_blank">作者：不羁虫</a><br />2013.7.30</p>
+	<p class="p-author"><a href="http://www.bujichong.com/" target="_blank">作者：不羁虫</a><br />2013.7.30</p>
 </div>
 
 <div class="intro-box">
@@ -276,91 +276,91 @@ pop代码示例
 <script type="text/javascript">
 
 $('.a-alert').click(function (e) {
-var c = 'clientX:'+e.clientX+' , clientY:'+e.clientY;
-$.sobox.alert('提示','我是sobox提示框<br />初始坐标是<span class="blue"> '+c+'</span><br />我的默认自定义class为<b class="red">"so-popAlert"</b>，<br />宽度<b class="orange">320px</b>，可以试着拖动我的标题...');
-return false;
+	var c = 'clientX:'+e.clientX+' , clientY:'+e.clientY;
+	$.sobox.alert('提示','我是sobox提示框<br />初始坐标是<span class="blue"> '+c+'</span><br />我的默认自定义class为<b class="red">"so-popAlert"</b>，<br />宽度<b class="orange">320px</b>，可以试着拖动我的标题...');
+	return false;
 });
 
 $('.a-confirm').click(function (e) {
-$.sobox.confirm('小调查','sobox是你见过的最好用的弹窗吗？',function () {
-$.sobox.alert('哎呀呀','哎呀，知己啊，哈哈，多多交流啊~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
-},function () {
-$.sobox.alert('哎呀妈呀','好吧，亲，提点意见吧~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
-});
-return false;
+	$.sobox.confirm('小调查','sobox是你见过的最好用的弹窗吗？',function () {
+		$.sobox.alert('哎呀呀','哎呀，知己啊，哈哈，多多交流啊~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
+	},function () {
+		$.sobox.alert('哎呀妈呀','好吧，亲，提点意见吧~~<br />我的邮箱：<a class="a-mail" href="mailto:bujichong@163.com">bujichong@163.com</a>');
+	});
+	return false;
 });
 
 $('.a-tip').click(function () {
-$.sobox.tip({
-content: '爱看不看，上面提示一下~'
-});
-return false;
+	$.sobox.tip({
+		content: '爱看不看，上面提示一下~'
+	});
+	return false;
 });
 
 $('.a-centerTip').click(function () {
-$.sobox.tip({
-posType:'center',
-showTitle:true,
-content: '其实我就是提示后自动关闭了...',
-showMask:true
-});
-return false;
+	$.sobox.tip({
+		posType:'center',
+		showTitle:true,
+		content: '其实我就是提示后自动关闭了...',
+		showMask:true
+	});
+	return false;
 });
 
 $('.a-bottomTip').click(function () {
-$.sobox.tip({
-cls:'so-popTip-2',
-posType:'bc',
-content:'想看不看，下面提示一下，3秒就撤了~',
-outCloseBtn : true,
-stayTime: 3000
-});
-return false;
+	$.sobox.tip({
+		cls:'so-popTip-2',
+		posType:'bc',
+		content:'想看不看，下面提示一下，3秒就撤了~',
+		outCloseBtn : true,
+		stayTime: 3000
+	});
+	return false;
 });
 
 $('.a-loading').click(function () {
-var myLoading = $.sobox.loading();
-setTimeout(function () {
-myLoading.close();
-},3000);
-return false;
+	var myLoading = $.sobox.loading();
+	setTimeout(function () {
+		myLoading.close();
+	},3000);
+	return false;
 });
 
 var soIme = $('.a-soIframe').soIframePop();
 var soIme2;//另一种全局变量获取iframePop的状态参数
 $('.a-iframe-t').click(function () {
-soIme2 = $(this).data('iframePop');
+	soIme2 = $(this).data('iframePop');
 });
 
 $('.a-sidePop').soSidePop({
-type:'content',
-content:'再点一下“点击这里试试”按钮，是不是不会弹出多个弹出框？',
-width:'300',
-offset:[10,10],
-btn:[{text:'确定',callback:function () {
-alert('这就是onlyOne的属性作用，为true时，当前只能有一个弹窗，不会重复弹出');
-}},{text:'取消',cls:'a-sopop-cancel'}]
+	type:'content',
+	content:'再点一下“点击这里试试”按钮，是不是不会弹出多个弹出框？',
+	width:'300',
+	offset:[10,10],
+	btn:[{text:'确定',callback:function () {
+		alert('这就是onlyOne的属性作用，为true时，当前只能有一个弹窗，不会重复弹出');
+	}},{text:'取消',cls:'a-sopop-cancel'}]
 });
 
 $('.a-overTip').soOverTip({
-type:'target',
-target:'.demo-box-2',
-width:250,
-offset:[-20,30]
+	type:'target',
+	target:'.demo-box-2',
+	width:250,
+	offset:[-20,30]
 });
 
 $('.a-pop-1').click(function () {
-$.sobox.pop({
-cls:'subsidy-box',
-title:'来者须知',
-width:520,
-content:'该弹窗为节能型号，使用成功后请您及时准备节能补贴资料。本站送装人员上门时，需要您的节能补贴资料才能为您安装，届时请您主动提供身份证复印件（包含正、反面）或营业执照复印件，并在《节能产品惠民工程补贴确认函》上签字确认。',
-btn:[
-	{text:'不接受',cls:'a-sopop-cancel'},
-	{text:'接受并使用',removePop:false,callback:function () {$.sobox.alert('提示','哈哈，这个窗口在最上面了吧');}
-}]
-});
-return false;
+	$.sobox.pop({
+		cls:'subsidy-box',
+		title:'来者须知',
+		width:520,
+		content:'该弹窗为节能型号，使用成功后请您及时准备节能补贴资料。本站送装人员上门时，需要您的节能补贴资料才能为您安装，届时请您主动提供身份证复印件（包含正、反面）或营业执照复印件，并在《节能产品惠民工程补贴确认函》上签字确认。',
+		btn:[
+			{text:'不接受',cls:'a-sopop-cancel'},
+			{text:'接受并使用',removePop:false,callback:function () {$.sobox.alert('提示','哈哈，这个窗口在最上面了吧');}
+		}]
+	});
+	return false;
 });
 
 $('.a-pop-2').click(function () {
@@ -374,13 +374,13 @@ return false;
 });
 
 $('.a-pop-3').click(function () {
-$.sobox.pop({
-type:'iframe',
-width:800,height:490,
-title:'sogou',
-iframe:'http://www.sogou.com/'
-});
-return false;
+	$.sobox.pop({
+		type:'iframe',
+		width:800,height:490,
+		title:'sogou',
+		iframe:'http://www.sogou.com/'
+	});
+	return false;
 });
 
 
@@ -397,6 +397,27 @@ $(document).ready(function(){
 });
 </script>
 <!-- SyntaxHighlighter end -->
+
+<script type="text/javascript">
+//ga
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56955204-1', 'auto');
+  ga('send', 'pageview');
+
+//baidu
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91f551b2f68716f7104f1c46a09b74af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
 
 </body>
 </html>

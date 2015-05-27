@@ -444,42 +444,5 @@ $.soValidate.addRex({
 		}
 	});
 
-	$.fn.groupRequired = function (opt) {
-		var o = {
-			style :'and',//'and','or'
-			type : 'required',
-			attr : 'class'
-		};
-		(typeof opt == 'string')?(o.style = opt):($.extend(o,opt||{}));
-		var _self = $(this);
-		//_self.addClass('required');
-		if (o.style=='and') {
-			_self.blur(function () {
-				if (this.value!='') {
-					_self.addClass(o.type);
-				}else {
-					_self.removeClass(o.type);
-				}
-			});
-		}
-		if (o.style=='or') {
-			_self.addClass(o.type);
-			_self.blur(function () {
-				var hasVal = false;
-				_self.each(function () {
-					if ($(this).val()!="") {
-						hasVal = true;
-						return false;
-					}
-				});
-				if (hasVal) {
-					_self.removeClass(o.type);
-				}else {
-					_self.addClass(o.type);
-				}
-			});
-		}
-		return _self;
-	};
 
 })(window.jQuery||window.Zepto);

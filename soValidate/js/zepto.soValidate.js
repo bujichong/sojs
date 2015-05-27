@@ -79,7 +79,6 @@ $.soValidate.addRex({
 
 */
 
-
 ;(function () {
 	/* serializeObject ** 表单属性对象化 */
 	$.fn.serializeObject = function() {
@@ -125,14 +124,14 @@ $.soValidate.addRex({
 			validate : function (opt) {//主验证函数
 				o = $.extend(o,opt||{});
 				$inputs&&$inputs.off('blur');//重置验证
-				$submitBtn&&$submitBtn.off('tap');//重置验证
+				$submitBtn&&$submitBtn.off('touchend');//重置验证
 				//_self.unbind('submit.validate');//重置验证
 				$inputs = _self.find('input,select,textarea');//初次或再次获得$inputs对象
 				if(o.inInputs){$inputs.add(o.inInputs)}
 				if(o.exInputs){$inputs.not(o.exInputs)}
 				$submitBtn = $(o.submitBtn);
 				if (o.validate) {
-					$submitBtn.on('tap',function (e) {//开启提交验证
+					$submitBtn.on('touchend',function (e) {//开启提交验证
 						e.preventDefault();
 						vv._submitValidate();
 					});

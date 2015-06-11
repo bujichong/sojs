@@ -114,26 +114,36 @@ $.soValidate.addRex({
 			exInputs :null,//排除已包含的验证对象
 			validate : true,//默认开启验证
 			submitBtn : null,//提交按钮，默认无，取form表单对象内部的submit按钮
+			validateBtn : '.btn-validate',//用来验证的按钮，除了不submit表单外，行为和submitBtn相同
 			submit : function (form) {//默认验证成功提交submit事件
 				form.submit();
+			},
+			validateBack : function (form,$validateBtn) {
+				// body...
 			},
 			fail : function (form,failInputArr) {//验证失败事件(返回form和验证失败的inputs)
 			}
 		},o||{});
 		var _self = $(this);
-		var $inputs,$submitBtn,$rules = $.soValidate.rules;
+		var $inputs,$submitBtn,$validateBtn,$rules = $.soValidate.rules;
 		var vv = {
 			validate : function (opt) {//主验证函数
 				o = $.extend(o,opt||{});
 				$inputs&&$inputs.unbind('blur.validate');//重置验证
 				$submitBtn&&$submitBtn.unbind('click.validate');//重置验证
+				$validateBtn&&$validateBtn.unbind('click.validate');//重置验证
 				//_self.unbind('submit.validate');//重置验证
 				$inputs = _self.find(':input').add(o.inInputs).not(o.exInputs).not(':submit');//初次或再次获得$inputs对象
 				$submitBtn = o.submitBtn?_self.find(o.submitBtn):_self.find('input:submit');
+				$validateBtn = $(o.validateBtn);
 				if (o.validate) {
 					$submitBtn.bind('click.validate',function (e) {//开启提交验证
 						e.preventDefault();
-						vv._submitValidate();
+						vv._submitValidate(true);
+					});
+					$validateBtn.on('click.validate',function (e) {//开启验证
+						e.preventDefault();
+						vv._submitValidate(false);
 					});
 					$inputs.bind('blur.validate',function () {
 						vv._blurValidate(this);
@@ -147,7 +157,7 @@ $.soValidate.addRex({
 			_blurValidate : function (obj) {//blur事件函数
 				vv._inputCheck(obj);
 			},
-			_submitValidate : function () {//submit验证函数
+			_submitValidate : function (isSubmit) {//submit验证函数
 				var state = true;
 				var $failInputs = [];
 				$inputs.each(function () {
@@ -156,7 +166,11 @@ $.soValidate.addRex({
 					state = state && s.state;
 				});
 				if (state) {
-					o.submit(_self);
+					if(isSubmit){
+						o.submit(_self);
+					}else{
+						o.validateBack(_self,$validateBtn);
+					}
 				}else {
 					o.fail(_self,$failInputs);
 				}

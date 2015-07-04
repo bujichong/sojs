@@ -105,6 +105,7 @@ $.soValidate.addRex({
 			attr : 'validate',//获取验证的标签，默认是 validate
 			quickAttr : 'class',//获取快捷验证的标签，默认采用 class
 			errorCls : 'txt-err',//input出错时，添加的class，默认是txt-err
+			errorParCls : 'p-itemErr',//input出错时，添加的class，默认是txt-err
 			msgCls : 'em-errMes',//错误提示信息的class
 			msgPos : null,//用来显示错误信息的盒子
 			inputPar : '.p-item',//如果不设置具体的msgPos，就将错误信息放在inputPar标签内,当前input的父级对象
@@ -257,8 +258,10 @@ $.soValidate.addRex({
 						$p.append('<em class="'+msgCls+'">'+msg+'</em>');
 					}
 					$p.find('.'+msgCls+'').html(msg);
+					$p.addClass(o.errorParCls);
 				}else {//正确状态
 					$p.find('.'+msgCls+'').remove();
+					$p.removeClass(o.errorParCls);
 				}
 			},
 			getInputs : function () {//返回inputs

@@ -148,6 +148,7 @@ $.alert = function (opt) {
            p.removePop();
        },o.removeDelay);
    }
+   return p;
 };
 
    $.confirm = function (opt) {
@@ -171,6 +172,7 @@ $.alert = function (opt) {
             o.cancel();
            p.removePop();
        });
+       return p;
    };
 
 $.loadTip =  function (opt) {
@@ -187,4 +189,5 @@ $.loadTip =  function (opt) {
            p.removePop();
        },o.removeDelay);
    }
+   return p;
 }

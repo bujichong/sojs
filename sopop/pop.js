@@ -127,6 +127,7 @@ $.pop = function(o) {
 };
 $.alert = function (opt) {
     var o = $.extend({
+        cls : 'so-alert',
         title : '提示',
         content : null,
         widthPer : 0.8,
@@ -153,6 +154,7 @@ $.alert = function (opt) {
 
    $.confirm = function (opt) {
         var o = $.extend({
+            cls : 'so-confirm',
             title : '提示',
             content : null,
             widthPer : 0.8,

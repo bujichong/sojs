@@ -57,20 +57,27 @@ a.a-mail:hover{text-decoration:none;}
 .so-popTip-1 .so-popbox-cont{padding:8px;}
 .so-popTip-2{border:1px solid #ff812d;background:#ffffd0;color:#f00;}
 .so-popAlert .p-so-popBtn{padding:5px 0 15px;}
-.so-loading{border:0px solid #fff;font-size:1.18em;box-shadow:1px 1px 1px #666;-webkit-box-shadow:1px 1px 1px #666;-moz-box-shadow:1px 1px 1px #666;}
-.so-loading .so-popbox-cont{padding:20px;text-align:center;background:url(loading.gif) no-repeat center 45%;}
-.so-loading .s-sopop-close{display:none;}
+
 a.a-sopop-btn{display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;margin:0 3px;padding:0 0 0 15px;color:#fff;background-color:#ec5656;background-position:0 -40px;}
 span.s-sopop-btn{display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;background-position:100% -40px;height:25px;line-height:23px;padding:0 15px 0 0;}
 
 a.a-sopop-cancel{background-position:0 -70px;color:#444;}
 a.a-sopop-cancel span.s-sopop-btn{background-position:100% -70px;}
 
+.so-loading,.so-ajaxLoading,.so-ajaxSucces{border:0px solid #fff;box-shadow:1px 1px 1px #666;-webkit-box-shadow:1px 1px 1px #666;-moz-box-shadow:1px 1px 1px #666;}
+.so-loading .so-popbox-cont{padding:16px 20px;text-align:center;background:#111 url(../images/sobox/loading.gif) no-repeat center 50%;}
+.so-loading .s-sopop-close,.so-ajaxLoading .s-sopop-close,.so-ajaxSuccess .s-sopop-close{display:none;}
+
+.so-ajaxLoading .so-popbox-cont{padding:12px 0 12px 42px;background:#f6f6f6 url(../images/sobox/loading.gif) no-repeat 16px 54%;color:#0b67ac;}
+.so-ajaxSuccess .so-popbox-cont{padding:12px 0 12px 42px;background:#f6f6f6 url(../images/sobox/icon-tip.png) no-repeat 16px -2488px;color:#177300;}
+
 .so-popConfirm .so-popbox-cont,
 .so-popWarning .so-popbox-cont{padding:30px 20px 15px 90px;background:url(../images/sobox/icon-tip.png) no-repeat 54px 26px;}/* 显示确认图标 */
 .so-popHelp .so-popbox-cont{padding:20px 20px 20px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -484px;}/* 显示帮助图标 */
 .so-popSuccess .so-popbox-cont{padding:20px 20px 20px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -984px;}/* 显示成功图标 */
-.so-popError .so-popbox-cont{padding:30px 20px 15px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -1474px;}/* 显示错误图标 *
+.so-popError .so-popbox-cont{padding:30px 20px 15px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -1474px;}/* 显示错误图标 */
+
+
 
 .so-overTip .s-sopop-close{top:-9px;left:25px;width:17px;height:9px;background-position:0 -101px;}
 

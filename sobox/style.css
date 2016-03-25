@@ -66,6 +66,11 @@ span.s-sopop-btn{display: -moz-inline-stack;display:inline-block;*display:inline
 a.a-sopop-cancel{background-position:0 -70px;color:#444;}
 a.a-sopop-cancel span.s-sopop-btn{background-position:100% -70px;}
 
+.so-popConfirm .so-popbox-cont,
+.so-popWarning .so-popbox-cont{padding:30px 20px 15px 90px;background:url(../images/sobox/icon-tip.png) no-repeat 54px 26px;}/* 显示确认图标 */
+.so-popHelp .so-popbox-cont{padding:20px 20px 20px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -484px;}/* 显示帮助图标 */
+.so-popSuccess .so-popbox-cont{padding:20px 20px 20px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -984px;}/* 显示成功图标 */
+.so-popError .so-popbox-cont{padding:30px 20px 15px 85px;background:url(../images/sobox/icon-tip.png) no-repeat 50px -1474px;}/* 显示错误图标 *
 
 .so-overTip .s-sopop-close{top:-9px;left:25px;width:17px;height:9px;background-position:0 -101px;}
 

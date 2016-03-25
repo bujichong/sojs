@@ -308,13 +308,28 @@
 			}
 			return {wrap:$wrap,mask:$mask,opt:o,removePop:removePop,showPop:showPop};
 		},
-		alert : function (title,content,callback) {//提示框：快捷3个参数：标题、正文、点击确定返回事件
+		alert : function (title,content,callback,width,cls) {//提示框：快捷5个参数：标题、正文、点击确定返回事件、提示框宽度、类名
 			var that = this;
+			var showTitle = title?true:false;
+			var width = width?width:320;//默认宽度320
+			var cls = cls?cls:'so-popAlert';//默认cls 为 so-popAlert
 			that.pop({
-				cls:'so-popAlert',title:title,width:360,content:content,
+				cls:cls,
+				title:title,
+				width:width,
+				content:content,
+				showTitle : showTitle,
 				btn:[{text:'确定'}],
 				closePop : callback
 			});
+		},
+		err : function (content,callback) {//基于alert延展
+			var that = this;
+			that.alert(null,content,callback,310,'so-popError');
+		},
+		warning : function (content,callback) {//基于alert延展
+			var that = this;
+			that.alert(null,content,callback,310,'so-popWarning');
 		},
 		confirm : function (title,content,success,cancel) {//确认框：快捷4个参数：标题、正文、点击确定返回事件、点击取消返回事件
 			var that = this;
